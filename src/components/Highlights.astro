@@ -1,0 +1,232 @@
+---
+---
+
+<section id="highlights" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">// LOGROS TÉCNICOS</div>
+      <h2 class="section-title">Puntos <span class="gradient-text">Destacados</span></h2>
+      <p class="section-subtitle">
+        Desafíos de ingeniería superados y soluciones innovadoras implementadas en LandySystem.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+
+      <!-- Highlight 1 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-badge">01</div>
+        <div class="timeline-content glass">
+          <div class="content-header">
+            <span class="icon">🏗️</span>
+            <h3>Arquitectura Escalable</h3>
+          </div>
+          <p>
+            Implementación de microservicios con Moleculer que permite escalar módulos como
+            finanzas o inventarios de forma independiente del POS en tiempo real.
+          </p>
+        </div>
+      </div>
+
+      <!-- Highlight 2 -->
+      <div class="timeline-item right reveal reveal-delay-1">
+        <div class="timeline-badge">02</div>
+        <div class="timeline-content glass">
+          <div class="content-header">
+            <span class="icon">🖨️</span>
+            <h3>Integración Hardware-Web</h3>
+          </div>
+          <p>
+            Puente API local en Node.js para imprimir tickets en impresoras térmicas ESC/POS,
+            superar limitaciones del navegador e integrar cámaras web y lectores de códigos de barras.
+          </p>
+        </div>
+      </div>
+
+      <!-- Highlight 3 -->
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-badge">03</div>
+        <div class="timeline-content glass">
+          <div class="content-header">
+            <span class="icon">📂</span>
+            <h3>Ecosistema Monorepo</h3>
+          </div>
+          <p>
+            Código organizado manejando concurrentemente tres entornos (Backend, UI Admin, POS)
+            mediante npm workspaces y scripts optimizados con concurrently.
+          </p>
+        </div>
+      </div>
+
+      <!-- Highlight 4 -->
+      <div class="timeline-item right reveal reveal-delay-3">
+        <div class="timeline-badge">04</div>
+        <div class="timeline-content glass">
+          <div class="content-header">
+            <span class="icon">📄</span>
+            <h3>Sistema Paperless</h3>
+          </div>
+          <p>
+            Digitalización completa con AWS Textract para OCR, firmas digitales con
+            react-signature-canvas, y generación automática de PDF y Excel para expedientes y compras.
+          </p>
+        </div>
+      </div>
+
+      <!-- Highlight 5 -->
+      <div class="timeline-item reveal reveal-delay-4">
+        <div class="timeline-badge">05</div>
+        <div class="timeline-content glass">
+          <div class="content-header">
+            <span class="icon">💎</span>
+            <h3>Motor Financiero Robusto</h3>
+          </div>
+          <p>
+            Cálculos complejos de depreciación de activos fijos y procesos de tesorería/caja
+            con diseño transaccional ACID en PostgreSQL.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 4rem auto 0;
+    padding: 2rem 0;
+  }
+
+  .timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 60px;
+    width: 100%;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-badge {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+    z-index: 2;
+    border: 3px solid var(--bg-primary);
+  }
+
+  .timeline-content {
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+  }
+
+  /* Triangle for mobile */
+  .timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .content-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+
+  .content-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .timeline-content p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* Desktop Layout */
+  @media (min-width: 768px) {
+    .timeline-line {
+      left: 50%;
+    }
+
+    .timeline-badge {
+      left: 50%;
+    }
+
+    .timeline-item {
+      width: 50%;
+      padding-left: 0;
+      padding-right: 40px;
+    }
+
+    .timeline-item.right {
+      margin-left: 50%;
+      padding-left: 40px;
+      padding-right: 0;
+    }
+
+    /* Triangles for desktop */
+    .timeline-content::before {
+      left: auto;
+      right: -10px;
+      border-right: none;
+      border-left: 10px solid rgba(255, 255, 255, 0.05); /* matches glass */
+    }
+
+    .timeline-item.right .timeline-content::before {
+      left: -10px;
+      right: auto;
+      border-left: none;
+      border-right: 10px solid rgba(255, 255, 255, 0.05);
+    }
+  }
+</style>

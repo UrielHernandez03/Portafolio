@@ -1,0 +1,174 @@
+---
+---
+
+<footer id="contacto" class="footer glass-static">
+  <div class="divider"></div>
+  
+  <div class="container footer-content">
+    <div class="footer-col brand-col">
+      <a href="#" class="logo gradient-text">UH</a>
+      <p class="brand-desc">
+        Desarrollador Full-Stack especializado en arquitecturas escalables y sistemas empresariales.
+      </p>
+    </div>
+    
+    <div class="footer-col links-col">
+      <h3>Enlaces</h3>
+      <nav class="footer-nav">
+        <a href="#proyecto">Proyecto</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#stack">Stack</a>
+        <a href="#modulos">Módulos</a>
+      </nav>
+    </div>
+    
+    <div class="footer-col contact-col">
+      <h3>Contacto</h3>
+      <a href="mailto:tucorreo@email.com" class="email-link">tucorreo@email.com</a>
+      <div class="social-links">
+        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p class="copyright">
+      &copy; 2025 Uriel Hernández. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    background: var(--bg-glass, rgba(7, 7, 13, 0.4));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-glass, rgba(255, 255, 255, 0.05));
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    margin-top: 4rem;
+  }
+
+  .divider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg, 
+      transparent 0%, 
+      var(--color-primary, #6366f1) 50%, 
+      transparent 100%
+    );
+    opacity: 0.5;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 4rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .footer-content {
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .logo {
+    font-size: 2rem;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .brand-desc {
+    color: var(--text-secondary, #a1a1aa);
+    line-height: 1.6;
+    max-width: 400px;
+    font-size: 0.95rem;
+  }
+
+  h3 {
+    color: var(--text-primary, #ffffff);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-nav a {
+    color: var(--text-secondary, #a1a1aa);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    width: fit-content;
+    font-size: 0.95rem;
+  }
+
+  .footer-nav a:hover {
+    color: var(--color-primary, #6366f1);
+  }
+
+  .contact-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .email-link {
+    color: var(--text-secondary, #a1a1aa);
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+    display: inline-block;
+  }
+
+  .email-link:hover {
+    color: var(--color-primary, #6366f1);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .social-links a {
+    color: var(--text-secondary, #a1a1aa);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: var(--color-primary, #6366f1);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border-glass, rgba(255, 255, 255, 0.05));
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .copyright {
+    color: var(--text-muted, #71717a);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+</style>
