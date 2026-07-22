@@ -1,0 +1,209 @@
+---
+// src/components/ProjectOverview.astro
+---
+
+<section id="proyecto" class="section">
+  <div class="orb orb-primary" style="top: 20%; left: -10%;"></div>
+  <div class="orb orb-secondary" style="bottom: 10%; right: -10%;"></div>
+  
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">// PROYECTO DESTACADO</span>
+      <h2 class="section-title">Plataforma <span class="gradient-text">LandySystem</span></h2>
+      <p class="section-subtitle">ERP y Punto de Venta diseñado para operaciones de alto rendimiento</p>
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-text glass reveal reveal-delay-1">
+        <p>LandySystem es una plataforma ERP/Punto de Venta (POS) robusta y modular, diseñada con una arquitectura de microservicios y múltiples interfaces de usuario. El sistema gestiona integralmente recursos humanos, finanzas, inventarios, compras, calidad, activos fijos y operaciones de punto de venta (restaurante).</p>
+        <p>El proyecto demuestra un dominio avanzado en arquitecturas full-stack modernas, gestión de monorepos, microservicios y desarrollo de interfaces de usuario complejas.</p>
+      </div>
+
+      <div class="terminal-mockup glass-static reveal reveal-delay-2">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="terminal-title">bash - landysystem</div>
+        </div>
+        <div class="terminal-body">
+<pre><code>$ landysystem --status
+
+<span class="status-icon">⚡</span> Backend    <span class="tech-tag">[Moleculer]</span>    <span class="status-running">● Running</span>
+<span class="status-icon">🖥</span>  Dashboard  <span class="tech-tag">[React + MUI]</span>  <span class="status-running">● Running</span>  
+<span class="status-icon">🏪</span> POS        <span class="tech-tag">[React + ESC]</span>  <span class="status-running">● Running</span>
+
+Modules: 7 active
+Services: 15+ microservices
+Databases: PostgreSQL + MongoDB</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-grid reveal reveal-delay-3">
+      <div class="stat-card glass">
+        <span class="stat-icon">📦</span>
+        <h3 class="stat-value gradient-text">7+</h3>
+        <p class="stat-label">Módulos ERP</p>
+      </div>
+      <div class="stat-card glass">
+        <span class="stat-icon">🖥️</span>
+        <h3 class="stat-value gradient-text">3</h3>
+        <p class="stat-label">Entornos</p>
+      </div>
+      <div class="stat-card glass">
+        <span class="stat-icon">⚡</span>
+        <h3 class="stat-value gradient-text">15+</h3>
+        <p class="stat-label">Microservicios</p>
+      </div>
+      <div class="stat-card glass">
+        <span class="stat-icon">🗄️</span>
+        <h3 class="stat-value gradient-text">2</h3>
+        <p class="stat-label">Bases de Datos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 992px) {
+    .overview-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+  }
+
+  .overview-text {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary, #94a3b8);
+  }
+
+  .terminal-mockup {
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .terminal-header {
+    background: rgba(20, 20, 40, 0.8);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+  }
+
+  .terminal-dots {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background-color: #ff5f56; }
+  .dot.yellow { background-color: #ffbd2e; }
+  .dot.green { background-color: #27c93f; }
+
+  .terminal-title {
+    flex: 1;
+    text-align: center;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.85rem;
+    color: var(--text-muted, #64748b);
+  }
+
+  .terminal-body {
+    padding: 1.5rem;
+    flex: 1;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    overflow-x: auto;
+  }
+
+  .terminal-body pre {
+    margin: 0;
+  }
+
+  .tech-tag {
+    color: var(--color-accent, #06b6d4);
+  }
+
+  .status-running {
+    color: #10b981;
+  }
+  
+  .status-icon {
+    display: inline-block;
+    width: 20px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-card {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+  }
+
+  .stat-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+
+  .stat-value {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #94a3b8);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+</style>

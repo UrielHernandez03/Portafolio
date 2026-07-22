@@ -1,0 +1,277 @@
+---
+// src/components/Architecture.astro
+---
+
+<section id="arquitectura" class="section arch-section">
+  <div class="orb orb-accent" style="top: 10%; right: 5%;"></div>
+  <div class="orb orb-primary" style="bottom: 20%; left: -5%;"></div>
+
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">// ARQUITECTURA</span>
+      <h2 class="section-title">Monorepo & <span class="gradient-text">Microservicios</span></h2>
+      <p class="section-subtitle">Arquitectura escalable y modular orientada a un alto rendimiento</p>
+    </div>
+
+    <div class="architecture-diagram reveal reveal-delay-1">
+      
+      <div class="monorepo-header glass">
+        <h3>MONOREPO</h3>
+      </div>
+
+      <div class="arch-connections-top">
+        <div class="line line-left"></div>
+        <div class="line line-center"></div>
+        <div class="line line-right"></div>
+      </div>
+
+      <div class="arch-cards">
+        <!-- Backend -->
+        <div class="arch-card backend-card glass">
+          <div class="card-header">
+            <span class="card-icon">⚙️</span>
+            <div class="card-title-box">
+              <h4>Backend API</h4>
+              <span class="card-subtitle">Moleculer Microservicios</span>
+            </div>
+          </div>
+          <ul class="features-list">
+            <li>PostgreSQL + MongoDB</li>
+            <li>JWT + bcrypt Auth</li>
+            <li>AWS S3 + Textract</li>
+            <li>PDF/Excel Generation</li>
+            <li>Email (Postmark)</li>
+          </ul>
+        </div>
+
+        <!-- UI Admin -->
+        <div class="arch-card ui-card glass">
+          <div class="card-header">
+            <span class="card-icon">🖥️</span>
+            <div class="card-title-box">
+              <h4>Dashboard Admin</h4>
+              <span class="card-subtitle">React 19 + Vite</span>
+            </div>
+          </div>
+          <ul class="features-list">
+            <li>Material UI v7</li>
+            <li>Chart.js Analytics</li>
+            <li>Zod Validation</li>
+            <li>Webcam + Barcode</li>
+            <li>Digital Signatures</li>
+          </ul>
+        </div>
+
+        <!-- POS -->
+        <div class="arch-card pos-card glass">
+          <div class="card-header">
+            <span class="card-icon">🏪</span>
+            <div class="card-title-box">
+              <h4>Punto de Venta</h4>
+              <span class="card-subtitle">React Optimizado</span>
+            </div>
+          </div>
+          <ul class="features-list">
+            <li>Operaciones Rápidas</li>
+            <li>Thermal Printer (ESC/POS)</li>
+            <li>Gestión de Mesas</li>
+            <li>Turnos y Cortes</li>
+            <li>Órdenes de Cocina</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arch-connections-bottom">
+        <div class="line line-vertical"></div>
+      </div>
+
+      <div class="shared-bar glass">
+        <span>npm workspaces</span>
+        <span class="dot-separator">•</span>
+        <span>concurrently</span>
+        <span class="dot-separator">•</span>
+        <span>Scripts Optimizados</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .arch-section {
+    background-color: var(--bg-secondary, #0d0d1a);
+    position: relative;
+    z-index: 1;
+  }
+
+  .architecture-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .monorepo-header {
+    padding: 1rem 3rem;
+    border-radius: 8px;
+    border-top: 2px solid var(--text-secondary, #94a3b8);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    min-width: 250px;
+  }
+
+  .monorepo-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    color: #e2e8f0;
+  }
+
+  .arch-connections-top {
+    display: none;
+  }
+
+  .arch-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (min-width: 992px) {
+    .arch-connections-top {
+      display: flex;
+      width: 66%;
+      height: 40px;
+      position: relative;
+    }
+    
+    .arch-connections-top .line {
+      position: absolute;
+      border: 2px dashed rgba(255, 255, 255, 0.15);
+      border-bottom: none;
+    }
+
+    .line-left {
+      top: 0; left: 0; right: 50%; height: 100%;
+      border-right: none;
+      border-radius: 8px 0 0 0;
+    }
+
+    .line-right {
+      top: 0; left: 50%; right: 0; height: 100%;
+      border-left: none;
+      border-radius: 0 8px 0 0;
+    }
+
+    .line-center {
+      top: 0; left: 50%; height: 100%;
+      border-left: 2px dashed rgba(255, 255, 255, 0.15);
+      border-top: none; border-right: none; border-bottom: none;
+    }
+
+    .arch-cards {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 0;
+    }
+  }
+
+  .arch-card {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(20, 20, 40, 0.5);
+  }
+
+  .arch-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .backend-card { border-top: 3px solid var(--color-primary, #6366f1); }
+  .backend-card:hover { box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15); }
+
+  .ui-card { border-top: 3px solid var(--color-secondary, #8b5cf6); }
+  .ui-card:hover { box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15); }
+
+  .pos-card { border-top: 3px solid var(--color-accent, #06b6d4); }
+  .pos-card:hover { box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+  }
+
+  .card-title-box h4 {
+    margin: 0 0 0.2rem 0;
+    font-size: 1.25rem;
+    color: #f8fafc;
+  }
+
+  .card-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #94a3b8);
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .features-list li {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+  }
+
+  .features-list li::before {
+    content: "▹";
+    color: var(--color-accent, #06b6d4);
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .arch-connections-bottom {
+    display: flex;
+    height: 40px;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.15);
+    margin: 1rem 0;
+  }
+
+  .shared-bar {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.9rem;
+    color: var(--text-muted, #64748b);
+    border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+  }
+
+  .dot-separator {
+    color: var(--color-primary, #6366f1);
+  }
+</style>

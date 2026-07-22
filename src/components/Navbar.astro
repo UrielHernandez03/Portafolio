@@ -1,0 +1,267 @@
+---
+---
+
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="logo gradient-text">UH</a>
+    
+    <nav class="nav-links">
+      <a href="#hero" class="nav-link">Inicio</a>
+      <a href="#proyectos" class="nav-link">Proyectos</a>
+      <a href="#proyecto" class="nav-link">Detalle</a>
+      <a href="#arquitectura" class="nav-link">Arquitectura</a>
+      <a href="#stack" class="nav-link">Stack</a>
+      <a href="#modulos" class="nav-link">Módulos</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
+    
+    <button class="menu-btn" aria-label="Toggle menu" id="menuBtn">
+      <span class="hamburger"></span>
+    </button>
+  </div>
+  
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero" class="mobile-link">Inicio</a>
+    <a href="#proyectos" class="mobile-link">Proyectos</a>
+    <a href="#proyecto" class="mobile-link">Detalle</a>
+    <a href="#arquitectura" class="mobile-link">Arquitectura</a>
+    <a href="#stack" class="mobile-link">Stack</a>
+    <a href="#modulos" class="mobile-link">Módulos</a>
+    <a href="#contacto" class="mobile-link">Contacto</a>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: var(--z-nav, 100);
+    background: rgba(7, 7, 13, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    height: var(--nav-height, 72px);
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar.scrolled {
+    background: rgba(7, 7, 13, 0.85);
+    border-bottom: 1px solid var(--border-glass, rgba(255,255,255,0.05));
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    font-family: var(--font-sans);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary, #a1a1aa);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+    font-family: var(--font-sans);
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--text-primary, #ffffff);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-primary, #6366f1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-link:hover::after, .nav-link.active::after {
+    opacity: 1;
+  }
+
+  .menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1000;
+  }
+
+  @media (min-width: 768px) {
+    .menu-btn {
+      display: none;
+    }
+  }
+
+  .hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary, #ffffff);
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary, #ffffff);
+    transition: transform 0.3s ease, top 0.3s ease;
+  }
+
+  .hamburger::before {
+    top: -6px;
+  }
+
+  .hamburger::after {
+    top: 6px;
+  }
+
+  .menu-btn.active .hamburger {
+    background: transparent;
+  }
+
+  .menu-btn.active .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .menu-btn.active .hamburger::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(7, 7, 13, 0.98);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-link {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-secondary, #a1a1aa);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: var(--font-sans);
+  }
+
+  .mobile-link:hover, .mobile-link.active {
+    color: var(--text-primary, #ffffff);
+  }
+</style>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const navbar = document.getElementById('navbar');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  // Mobile menu toggle
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+  }
+
+  // Close mobile menu on link click
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (menuBtn && mobileMenu) {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+    
+    // Active link update
+    const scrollY = window.scrollY;
+    let currentSection = '';
+    
+    document.querySelectorAll('section').forEach(section => {
+      const sectionTop = (section as HTMLElement).offsetTop - 100;
+      const sectionHeight = (section as HTMLElement).offsetHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        currentSection = section.getAttribute('id') || '';
+      }
+    });
+
+    [...navLinks, ...mobileLinks].forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentSection}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
