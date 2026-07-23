@@ -67,19 +67,37 @@ const projects: Project[] = [
     accentColor: '#6366f1',
     accentGlow: 'rgba(99, 102, 241, 0.15)',
   },
+  {
+    id: 'historias-en-papel',
+    title: 'Historias en Papel',
+    subtitle: 'Plataforma de Gestión de Eventos (SISTWEB)',
+    description:
+      'Expansión y optimización de plataforma de gestión de eventos exclusiva. Se implementó una arquitectura de carga masiva en Excel para el registro simultáneo de múltiples acompañantes, integrándose sin causar regresiones y manteniendo la UX y validaciones corporativas.',
+    features: [
+      'Algoritmo de extracción segura de archivos (.xlsx) con PHP y asociación relacional',
+      'Edición no destructiva de plantillas conservando Data Validation y estilos (PhpSpreadsheet)',
+      'Normalización robusta de strings y estrategia de fallbacks para evitar corrupción de datos',
+      'Inyección dinámica de datos y renderizado en tiempo real con DataTables',
+      'Desarrollo retrocompatible protegiendo envíos masivos y generación de QR',
+      'Manejo de entornos seguros con Git y adaptación a código legacy sin fricciones'
+    ],
+    tags: ['PHP', 'JavaScript', 'HTML', 'DataTables', 'PhpSpreadsheet', 'Git'],
+    images: [
+      {
+        src: '/images/historias-en-papel.webp',
+        alt: 'Dashboard de Gestión de Eventos - Historias en Papel',
+        label: 'Panel de Eventos',
+        url: 'www.historiasenpapeldigital.com',
+      }
+    ],
+    links: [
+      { label: 'Sistema Digital', url: 'https://www.historiasenpapeldigital.com/', icon: '🌐' },
+      { label: 'Sitio Corporativo', url: 'https://www.historiasenpapel.com/', icon: '🔗' },
+    ],
+    accentColor: '#3b82f6',
+    accentGlow: 'rgba(59, 130, 246, 0.15)',
+  },
   // ── Agrega más proyectos aquí ──
-  // {
-  //   id: 'otro-proyecto',
-  //   title: 'Mi Otro Proyecto',
-  //   subtitle: 'Descripción corta',
-  //   description: '...',
-  //   features: ['...'],
-  //   tags: ['...'],
-  //   images: [{ src: '/images/otro.png', alt: '...', label: '...', url: '...' }],
-  //   links: [{ label: 'Ver Demo', url: '...', icon: '🚀' }],
-  //   accentColor: '#8b5cf6',
-  //   accentGlow: 'rgba(139, 92, 246, 0.15)',
-  // },
 ];
 ---
 
@@ -190,12 +208,19 @@ const projects: Project[] = [
 
             <!-- Links -->
             <div class="project-links">
-              {project.links.map((link, linkIdx) => (
+              <a href={`/proyecto/${project.id}`} class="btn btn-primary">
+                <span>📖</span>
+                Leer Caso de Estudio
+                <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                  <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                </svg>
+              </a>
+              {project.links.map((link) => (
                 <a
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class={linkIdx === 0 ? 'btn btn-primary' : 'btn btn-outline'}
+                  class="btn btn-outline"
                 >
                   <span>{link.icon}</span>
                   {link.label}
@@ -230,7 +255,7 @@ const projects: Project[] = [
     display: grid;
     grid-template-columns: 1.15fr 1fr;
     gap: var(--space-3xl);
-    align-items: start;
+    align-items: center;
     padding: var(--space-3xl);
     background: var(--bg-glass);
     backdrop-filter: blur(20px);

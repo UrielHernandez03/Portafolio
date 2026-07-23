@@ -1,86 +1,46 @@
 ---
----
+import type { ProjectData } from '../data/projectsData';
 
+interface Props {
+  project?: ProjectData;
+}
+
+const { project } = Astro.props;
+const stack = project?.stack || [];
+---
 <section id="stack" class="section">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-label">// STACK TECNOLÓGICO</div>
       <h2 class="section-title">Tecnologías & <span class="gradient-text">Herramientas</span></h2>
       <p class="section-subtitle">
-        El ecosistema de LandySystem está construido con tecnologías modernas y robustas,
+        El ecosistema de {project?.title || 'este proyecto'} está construido con tecnologías modernas y robustas,
         optimizadas para escalabilidad, rendimiento y experiencia de usuario.
       </p>
     </div>
 
     <div class="stack-grid">
-      <!-- Backend Column -->
-      <div class="stack-card glass backend-card reveal reveal-delay-1">
-        <div class="card-header">
-          <div class="header-icon">⚙️</div>
-          <div class="header-info">
-            <h3 class="category-name">Backend (Microservicios)</h3>
-            <p class="category-desc">Arquitectura escalable y distribuida</p>
+      {stack.map((category, index) => {
+        // Map the index to a specific CSS class for styling
+        const styleClass = index % 3 === 0 ? 'backend-card' : index % 3 === 1 ? 'frontend-card' : 'pos-card';
+        const delayClass = `reveal-delay-${(index % 3) + 1}`;
+        
+        return (
+          <div class={`stack-card glass ${styleClass} reveal ${delayClass}`}>
+            <div class="card-header">
+              <div class="header-icon">{category.items[0]?.icon || '⚙️'}</div>
+              <div class="header-info">
+                <h3 class="category-name">{category.category}</h3>
+              </div>
+            </div>
+            <div class="tech-grid">
+              {category.items.map(item => (
+                <span class="tech-pill">{item.name}</span>
+              ))}
+            </div>
           </div>
-        </div>
-        <div class="tech-grid">
-          <span class="tech-pill">Moleculer</span>
-          <span class="tech-pill">Node.js</span>
-          <span class="tech-pill">PostgreSQL</span>
-          <span class="tech-pill">MongoDB</span>
-          <span class="tech-pill">JWT</span>
-          <span class="tech-pill">bcrypt</span>
-          <span class="tech-pill">AWS S3</span>
-          <span class="tech-pill">AWS Textract</span>
-          <span class="tech-pill">PDFKit</span>
-          <span class="tech-pill">XLSX</span>
-          <span class="tech-pill">Multer</span>
-          <span class="tech-pill">QRCode</span>
-          <span class="tech-pill">Postmark</span>
-        </div>
-      </div>
-
-      <!-- Frontend Admin Column -->
-      <div class="stack-card glass frontend-card reveal reveal-delay-2">
-        <div class="card-header">
-          <div class="header-icon">💻</div>
-          <div class="header-info">
-            <h3 class="category-name">Frontend Admin (UI)</h3>
-            <p class="category-desc">Interfaz de administración y gestión</p>
-          </div>
-        </div>
-        <div class="tech-grid">
-          <span class="tech-pill">React 19</span>
-          <span class="tech-pill">Vite</span>
-          <span class="tech-pill">Material UI v7</span>
-          <span class="tech-pill">Emotion</span>
-          <span class="tech-pill">Zod</span>
-          <span class="tech-pill">Chart.js</span>
-          <span class="tech-pill">jsPDF</span>
-          <span class="tech-pill">ExcelJS</span>
-          <span class="tech-pill">react-webcam</span>
-          <span class="tech-pill">@zxing/browser</span>
-          <span class="tech-pill">react-signature-canvas</span>
-        </div>
-      </div>
-
-      <!-- Frontend POS Column -->
-      <div class="stack-card glass pos-card reveal reveal-delay-3">
-        <div class="card-header">
-          <div class="header-icon">🏪</div>
-          <div class="header-info">
-            <h3 class="category-name">Frontend POS</h3>
-            <p class="category-desc">Punto de venta y conexión local</p>
-          </div>
-        </div>
-        <div class="tech-grid">
-          <span class="tech-pill">React</span>
-          <span class="tech-pill">Node.js Service</span>
-          <span class="tech-pill">ESC/POS Protocol</span>
-          <span class="tech-pill">Thermal Printer</span>
-          <span class="tech-pill">Impresora Térmica</span>
-          <span class="tech-pill">Hardware Integration</span>
-        </div>
-      </div>
+        );
+      })}
     </div>
   </div>
 </section>

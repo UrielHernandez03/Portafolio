@@ -1,5 +1,17 @@
 ---
-// src/components/Architecture.astro
+import type { ProjectData } from '../data/projectsData';
+
+interface Props {
+  project?: ProjectData;
+}
+
+const { project } = Astro.props;
+const arch = project?.architecture || {
+  title: 'Monorepo & Microservicios',
+  subtitle: 'Arquitectura escalable y modular',
+  type: 'MONOREPO',
+  cards: []
+};
 ---
 
 <section id="arquitectura" class="section arch-section">
@@ -9,14 +21,14 @@
   <div class="container">
     <div class="section-header reveal">
       <span class="section-label">// ARQUITECTURA</span>
-      <h2 class="section-title">Monorepo & <span class="gradient-text">Microservicios</span></h2>
-      <p class="section-subtitle">Arquitectura escalable y modular orientada a un alto rendimiento</p>
+      <h2 class="section-title">{arch.title.split(' ')[0]} <span class="gradient-text">{arch.title.substring(arch.title.indexOf(' ') + 1)}</span></h2>
+      <p class="section-subtitle">{arch.subtitle}</p>
     </div>
 
     <div class="architecture-diagram reveal reveal-delay-1">
       
       <div class="monorepo-header glass">
-        <h3>MONOREPO</h3>
+        <h3>{arch.type}</h3>
       </div>
 
       <div class="arch-connections-top">
@@ -26,59 +38,22 @@
       </div>
 
       <div class="arch-cards">
-        <!-- Backend -->
-        <div class="arch-card backend-card glass">
-          <div class="card-header">
-            <span class="card-icon">⚙️</span>
-            <div class="card-title-box">
-              <h4>Backend API</h4>
-              <span class="card-subtitle">Moleculer Microservicios</span>
+        {arch.cards.map((card, index) => (
+          <div class={`arch-card glass ${index === 0 ? 'backend-card' : index === 1 ? 'ui-card' : 'pos-card'}`}>
+            <div class="card-header">
+              <span class="card-icon">{card.icon}</span>
+              <div class="card-title-box">
+                <h4>{card.title}</h4>
+                <span class="card-subtitle">{card.subtitle}</span>
+              </div>
             </div>
+            <ul class="features-list">
+              {card.features.map(feature => (
+                <li>{feature}</li>
+              ))}
+            </ul>
           </div>
-          <ul class="features-list">
-            <li>PostgreSQL + MongoDB</li>
-            <li>JWT + bcrypt Auth</li>
-            <li>AWS S3 + Textract</li>
-            <li>PDF/Excel Generation</li>
-            <li>Email (Postmark)</li>
-          </ul>
-        </div>
-
-        <!-- UI Admin -->
-        <div class="arch-card ui-card glass">
-          <div class="card-header">
-            <span class="card-icon">🖥️</span>
-            <div class="card-title-box">
-              <h4>Dashboard Admin</h4>
-              <span class="card-subtitle">React 19 + Vite</span>
-            </div>
-          </div>
-          <ul class="features-list">
-            <li>Material UI v7</li>
-            <li>Chart.js Analytics</li>
-            <li>Zod Validation</li>
-            <li>Webcam + Barcode</li>
-            <li>Digital Signatures</li>
-          </ul>
-        </div>
-
-        <!-- POS -->
-        <div class="arch-card pos-card glass">
-          <div class="card-header">
-            <span class="card-icon">🏪</span>
-            <div class="card-title-box">
-              <h4>Punto de Venta</h4>
-              <span class="card-subtitle">React Optimizado</span>
-            </div>
-          </div>
-          <ul class="features-list">
-            <li>Operaciones Rápidas</li>
-            <li>Thermal Printer (ESC/POS)</li>
-            <li>Gestión de Mesas</li>
-            <li>Turnos y Cortes</li>
-            <li>Órdenes de Cocina</li>
-          </ul>
-        </div>
+        ))}
       </div>
 
       <div class="arch-connections-bottom">

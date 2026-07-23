@@ -1,4 +1,12 @@
 ---
+import type { ProjectData } from '../data/projectsData';
+
+interface Props {
+  project?: ProjectData;
+}
+
+const { project } = Astro.props;
+const highlights = project?.highlights || [];
 ---
 
 <section id="highlights" class="section">
@@ -13,81 +21,19 @@
 
     <div class="timeline">
       <div class="timeline-line"></div>
-
-      <!-- Highlight 1 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-badge">01</div>
-        <div class="timeline-content glass">
-          <div class="content-header">
-            <span class="icon">🏗️</span>
-            <h3>Arquitectura Escalable</h3>
+      
+      {highlights.map((item, index) => (
+        <div class={`timeline-item ${index % 2 !== 0 ? 'right' : ''} reveal reveal-delay-${(index % 4) + 1}`}>
+          <div class="timeline-badge">0{index + 1}</div>
+          <div class="timeline-content glass">
+            <div class="content-header">
+              <span class="icon">✨</span>
+              <h3>{item.title}</h3>
+            </div>
+            <p>{item.description}</p>
           </div>
-          <p>
-            Implementación de microservicios con Moleculer que permite escalar módulos como
-            finanzas o inventarios de forma independiente del POS en tiempo real.
-          </p>
         </div>
-      </div>
-
-      <!-- Highlight 2 -->
-      <div class="timeline-item right reveal reveal-delay-1">
-        <div class="timeline-badge">02</div>
-        <div class="timeline-content glass">
-          <div class="content-header">
-            <span class="icon">🖨️</span>
-            <h3>Integración Hardware-Web</h3>
-          </div>
-          <p>
-            Puente API local en Node.js para imprimir tickets en impresoras térmicas ESC/POS,
-            superar limitaciones del navegador e integrar cámaras web y lectores de códigos de barras.
-          </p>
-        </div>
-      </div>
-
-      <!-- Highlight 3 -->
-      <div class="timeline-item reveal reveal-delay-2">
-        <div class="timeline-badge">03</div>
-        <div class="timeline-content glass">
-          <div class="content-header">
-            <span class="icon">📂</span>
-            <h3>Ecosistema Monorepo</h3>
-          </div>
-          <p>
-            Código organizado manejando concurrentemente tres entornos (Backend, UI Admin, POS)
-            mediante npm workspaces y scripts optimizados con concurrently.
-          </p>
-        </div>
-      </div>
-
-      <!-- Highlight 4 -->
-      <div class="timeline-item right reveal reveal-delay-3">
-        <div class="timeline-badge">04</div>
-        <div class="timeline-content glass">
-          <div class="content-header">
-            <span class="icon">📄</span>
-            <h3>Sistema Paperless</h3>
-          </div>
-          <p>
-            Digitalización completa con AWS Textract para OCR, firmas digitales con
-            react-signature-canvas, y generación automática de PDF y Excel para expedientes y compras.
-          </p>
-        </div>
-      </div>
-
-      <!-- Highlight 5 -->
-      <div class="timeline-item reveal reveal-delay-4">
-        <div class="timeline-badge">05</div>
-        <div class="timeline-content glass">
-          <div class="content-header">
-            <span class="icon">💎</span>
-            <h3>Motor Financiero Robusto</h3>
-          </div>
-          <p>
-            Cálculos complejos de depreciación de activos fijos y procesos de tesorería/caja
-            con diseño transaccional ACID en PostgreSQL.
-          </p>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
