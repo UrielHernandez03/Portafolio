@@ -1,5 +1,18 @@
 ---
-// src/components/ProjectOverview.astro
+import type { ProjectData } from '../data/projectsData';
+
+interface Props {
+  project?: ProjectData;
+}
+
+const { project } = Astro.props;
+
+// Default to a fallback if no project is provided (e.g. if rendered directly without props by mistake)
+const title = project?.title || 'Plataforma LandySystem';
+const subtitle = project?.subtitle || 'ERP y Punto de Venta diseñado para operaciones de alto rendimiento';
+const description = project?.description || ['Descripción del proyecto.'];
+const terminal = project?.terminal || { command: '', output: '' };
+const stats = project?.stats || [];
 ---
 
 <section id="proyecto" class="section">
@@ -9,14 +22,15 @@
   <div class="container">
     <div class="section-header reveal">
       <span class="section-label">// PROYECTO DESTACADO</span>
-      <h2 class="section-title">Plataforma <span class="gradient-text">LandySystem</span></h2>
-      <p class="section-subtitle">ERP y Punto de Venta diseñado para operaciones de alto rendimiento</p>
+      <h2 class="section-title">Plataforma <span class="gradient-text">{title}</span></h2>
+      <p class="section-subtitle">{subtitle}</p>
     </div>
 
     <div class="overview-grid">
       <div class="overview-text glass reveal reveal-delay-1">
-        <p>LandySystem es una plataforma ERP/Punto de Venta (POS) robusta y modular, diseñada con una arquitectura de microservicios y múltiples interfaces de usuario. El sistema gestiona integralmente recursos humanos, finanzas, inventarios, compras, calidad, activos fijos y operaciones de punto de venta (restaurante).</p>
-        <p>El proyecto demuestra un dominio avanzado en arquitecturas full-stack modernas, gestión de monorepos, microservicios y desarrollo de interfaces de usuario complejas.</p>
+        {description.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
       </div>
 
       <div class="terminal-mockup glass-static reveal reveal-delay-2">
@@ -26,43 +40,24 @@
             <span class="dot yellow"></span>
             <span class="dot green"></span>
           </div>
-          <div class="terminal-title">bash - landysystem</div>
+          <div class="terminal-title">bash - {project?.id || 'project'}</div>
         </div>
         <div class="terminal-body">
-<pre><code>$ landysystem --status
+<pre><code>$ {terminal.command}
 
-<span class="status-icon">⚡</span> Backend    <span class="tech-tag">[Moleculer]</span>    <span class="status-running">● Running</span>
-<span class="status-icon">🖥</span>  Dashboard  <span class="tech-tag">[React + MUI]</span>  <span class="status-running">● Running</span>  
-<span class="status-icon">🏪</span> POS        <span class="tech-tag">[React + ESC]</span>  <span class="status-running">● Running</span>
-
-Modules: 7 active
-Services: 15+ microservices
-Databases: PostgreSQL + MongoDB</code></pre>
+<span set:html={terminal.output}></span></code></pre>
         </div>
       </div>
     </div>
 
     <div class="stats-grid reveal reveal-delay-3">
-      <div class="stat-card glass">
-        <span class="stat-icon">📦</span>
-        <h3 class="stat-value gradient-text">7+</h3>
-        <p class="stat-label">Módulos ERP</p>
-      </div>
-      <div class="stat-card glass">
-        <span class="stat-icon">🖥️</span>
-        <h3 class="stat-value gradient-text">3</h3>
-        <p class="stat-label">Entornos</p>
-      </div>
-      <div class="stat-card glass">
-        <span class="stat-icon">⚡</span>
-        <h3 class="stat-value gradient-text">15+</h3>
-        <p class="stat-label">Microservicios</p>
-      </div>
-      <div class="stat-card glass">
-        <span class="stat-icon">🗄️</span>
-        <h3 class="stat-value gradient-text">2</h3>
-        <p class="stat-label">Bases de Datos</p>
-      </div>
+      {stats.map((stat) => (
+        <div class="stat-card glass">
+          <span class="stat-icon">{stat.icon}</span>
+          <h3 class="stat-value gradient-text">{stat.value}</h3>
+          <p class="stat-label">{stat.label}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -160,18 +155,15 @@ Databases: PostgreSQL + MongoDB</code></pre>
   }
 
   .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
   }
 
-  @media (min-width: 768px) {
-    .stats-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
   .stat-card {
+    flex: 1 1 200px;
+    max-width: 300px;
     padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;

@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import ProjectOverview from '../../components/ProjectOverview.astro';
+import Architecture from '../../components/Architecture.astro';
+import TechStack from '../../components/TechStack.astro';
+import Modules from '../../components/Modules.astro';
+import Highlights from '../../components/Highlights.astro';
+import { projectsData } from '../../data/projectsData';
+
+export function getStaticPaths() {
+  return [
+    { params: { id: 'landysystem' } },
+    { params: { id: 'historias-en-papel' } },
+  ];
+}
+
+const { id } = Astro.params;
+const project = projectsData[id];
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={`${project.title} - Portafolio`}>
+  <Navbar />
+  
+  <div style="padding-top: 80px;">
+    <!-- We wrap the detail components here, passing the project data as props -->
+    <ProjectOverview project={project} />
+    <Architecture project={project} />
+    <TechStack project={project} />
+    <Modules project={project} />
+    <Highlights project={project} />
+  </div>
+
+  <Footer />
+</Layout>
