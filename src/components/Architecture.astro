@@ -100,7 +100,7 @@ const arch = project?.architecture || {
     margin: 0;
     font-size: 1.2rem;
     letter-spacing: 0.15em;
-    color: #e2e8f0;
+    color: var(--text-primary);
   }
 
   .arch-connections-top {
@@ -127,7 +127,7 @@ const arch = project?.architecture || {
     
     .arch-connections-top .line {
       position: absolute;
-      border: 2px dashed rgba(255, 255, 255, 0.15);
+      border: 2px dashed var(--border-glass-hover);
       border-bottom: none;
     }
 
@@ -145,7 +145,7 @@ const arch = project?.architecture || {
 
     .line-center {
       top: 0; left: 50%; height: 100%;
-      border-left: 2px dashed rgba(255, 255, 255, 0.15);
+      border-left: 2px dashed var(--border-glass-hover);
       border-top: none; border-right: none; border-bottom: none;
     }
 
@@ -161,7 +161,8 @@ const arch = project?.architecture || {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: rgba(20, 20, 40, 0.5);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
   }
 
   .arch-card:hover {
@@ -193,7 +194,7 @@ const arch = project?.architecture || {
   .card-title-box h4 {
     margin: 0 0 0.2rem 0;
     font-size: 1.25rem;
-    color: #f8fafc;
+    color: var(--text-primary);
   }
 
   .card-subtitle {
@@ -212,7 +213,7 @@ const arch = project?.architecture || {
 
   .features-list li {
     font-size: 0.95rem;
-    color: #cbd5e1;
+    color: var(--text-secondary);
     display: flex;
     align-items: center;
   }
@@ -228,7 +229,7 @@ const arch = project?.architecture || {
     display: flex;
     height: 40px;
     width: 2px;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--border-glass-hover);
     margin: 1rem 0;
   }
 

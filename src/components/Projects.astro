@@ -34,25 +34,45 @@ const projects: Project[] = [
   {
     id: 'landysystem',
     title: 'LandySystem',
-    subtitle: 'ERP & Punto de Venta — Plataforma Empresarial',
+    subtitle: 'ERP Empresarial & Panel Administrativo',
     description:
-      'Plataforma ERP/Punto de Venta robusta y modular diseñada con arquitectura de microservicios y múltiples interfaces de usuario. Gestiona integralmente recursos humanos, finanzas, inventarios, compras, calidad, activos fijos y operaciones de punto de venta para restaurante/carnicería.',
+      'Plataforma ERP robusta y modular diseñada con arquitectura de microservicios. Gestiona integralmente recursos humanos, finanzas, inventarios, compras, calidad, y activos fijos para empresas de alto volumen.',
     features: [
       '7+ módulos ERP integrados',
       'Arquitectura de microservicios con Moleculer',
-      'Integración de hardware (impresoras térmicas ESC/POS)',
       'Sistema paperless con OCR (AWS Textract)',
       'Control multi-sucursal con RBAC',
       'Generación de reportes PDF/Excel en tiempo real',
     ],
-    tags: ['React 19', 'Node.js', 'Moleculer', 'PostgreSQL', 'MongoDB', 'Material UI', 'Vite', 'AWS', 'JWT'],
+    tags: ['React 19', 'Node.js', 'Moleculer', 'PostgreSQL', 'MongoDB', 'Material UI', 'Vite', 'AWS'],
     images: [
       {
         src: '/images/landysystem-dashboard.png',
         alt: 'LandySystem Dashboard — Panel administrativo ERP',
         label: 'Dashboard Admin',
         url: 'dev.landysystem.com.mx',
-      },
+      }
+    ],
+    links: [
+      { label: 'Ver Dashboard', url: 'https://dev.landysystem.com.mx/', icon: '🖥️' }
+    ],
+    accentColor: '#6366f1',
+    accentGlow: 'rgba(99, 102, 241, 0.15)',
+  },
+  {
+    id: 'landypos',
+    title: 'LandyPOS',
+    subtitle: 'Punto de Venta para Restaurantes y Retail',
+    description:
+      'Sistema de Punto de Venta (POS) rápido y optimizado para pantallas táctiles. Diseñado para manejar alto volumen de transacciones con conexión directa a hardware local y sincronización en la nube.',
+    features: [
+      'Interfaz táctil optimizada para velocidad',
+      'Integración de hardware (impresoras térmicas ESC/POS y cajón de dinero)',
+      'Capacidades offline y sincronización en tiempo real',
+      'Gestión rápida de comandas y tickets',
+    ],
+    tags: ['React', 'Vite', 'Node.js', 'PostgreSQL', 'ESC/POS', 'PWA'],
+    images: [
       {
         src: '/images/landysystem-pos.png',
         alt: 'LandyPOS — Punto de Venta Restaurante',
@@ -61,11 +81,10 @@ const projects: Project[] = [
       },
     ],
     links: [
-      { label: 'Ver Dashboard', url: 'https://dev.landysystem.com.mx/', icon: '🖥️' },
       { label: 'Ver POS', url: 'https://pos-dev.landysystem.com.mx/', icon: '🏪' },
     ],
-    accentColor: '#6366f1',
-    accentGlow: 'rgba(99, 102, 241, 0.15)',
+    accentColor: '#06b6d4',
+    accentGlow: 'rgba(6, 182, 212, 0.15)',
   },
   {
     id: 'historias-en-papel',
@@ -321,7 +340,7 @@ const projects: Project[] = [
     align-items: center;
     gap: var(--space-md);
     padding: 0.6rem 1rem;
-    background: rgba(20, 20, 40, 0.9);
+    background: var(--bg-surface-hover);
     border-bottom: 1px solid var(--border-glass);
   }
 

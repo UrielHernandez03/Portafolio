@@ -47,25 +47,36 @@ const stack = project?.stack || [];
 
 <style>
   .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     margin-top: 3rem;
   }
 
-  @media (min-width: 992px) {
-    .stack-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
   .stack-card {
+    flex: 1 1 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     padding: 2rem;
     position: relative;
     overflow: hidden;
     transition: var(--transition-base);
+  }
+
+  @media (min-width: 768px) {
+    .stack-card {
+      flex: 1 1 calc(50% - 1rem);
+      max-width: 450px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .stack-card {
+      flex: 1 1 calc(33.333% - 1.33rem);
+      max-width: 380px;
+    }
   }
 
   .backend-card {
@@ -117,7 +128,7 @@ const stack = project?.stack || [];
 
   .category-desc {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-secondary);
     margin: 0;
   }
 
@@ -131,7 +142,7 @@ const stack = project?.stack || [];
     padding: 0.4rem 0.9rem;
     font-size: 0.82rem;
     font-family: var(--font-mono);
-    color: #fff;
+    color: var(--text-primary);
     background: rgba(var(--card-accent-rgb), 0.05);
     border: 1px solid rgba(var(--card-accent-rgb), 0.2);
     border-radius: 100px;

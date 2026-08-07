@@ -1,6 +1,7 @@
 ---
-// Technologies.astro — Diseño premium con tabs e íconos grandes
+// Technologies.astro — Toggle Web/Móvil + tabs por categoría
 
+// platform: 'both' | 'web' | 'mobile'
 const categories = [
   {
     id: "frontend",
@@ -8,14 +9,14 @@ const categories = [
     accent: "99, 102, 241",
     color: "#6366f1",
     techs: [
-      { name: "JavaScript",   icon: "js" },
-      { name: "TypeScript",   icon: "ts" },
-      { name: "React",        icon: "react" },
-      { name: "React Native", icon: "react" },
-      { name: "Next.js",      icon: "nextjs" },
-      { name: "Expo",         icon: "expo" },
-      { name: "CSS",          icon: "css" },
-      { name: "HTML",         icon: "html" },
+      { name: "JavaScript",   icon: "js",     platform: "both"   },
+      { name: "TypeScript",   icon: "ts",     platform: "both"   },
+      { name: "React",        icon: "react",  platform: "web"    },
+      { name: "React Native", icon: "react",  platform: "mobile" },
+      { name: "Next.js",      icon: "nextjs", platform: "web"    },
+      { name: "Expo",         icon: "expo",   platform: "mobile" },
+      { name: "CSS",          icon: "css",    platform: "web"    },
+      { name: "HTML",         icon: "html",   platform: "web"    },
     ],
   },
   {
@@ -24,13 +25,13 @@ const categories = [
     accent: "139, 92, 246",
     color: "#8b5cf6",
     techs: [
-      { name: "Node.js",   icon: "nodejs" },
-      { name: "Express",   icon: "express" },
-      { name: "Moleculer", icon: "moleculer" },
-      { name: "Java",      icon: "java" },
-      { name: "Python",    icon: "python" },
-      { name: "PHP",       icon: "php" },
-      { name: "Laravel",   icon: "laravel" },
+      { name: "Node.js",   icon: "nodejs",    platform: "both"   },
+      { name: "Express",   icon: "express",   platform: "both"   },
+      { name: "Moleculer", icon: "moleculer", platform: "both"   },
+      { name: "Java",      icon: "java",      platform: "both"   },
+      { name: "Python",    icon: "python",    platform: "both"   },
+      { name: "PHP",       icon: "php",       platform: "web"    },
+      { name: "Laravel",   icon: "laravel",   platform: "web"    },
     ],
   },
   {
@@ -39,10 +40,10 @@ const categories = [
     accent: "6, 182, 212",
     color: "#06b6d4",
     techs: [
-      { name: "SQL",        icon: "sql" },
-      { name: "PostgreSQL", icon: "postgresql" },
-      { name: "MySQL",      icon: "mysql" },
-      { name: "MongoDB",    icon: "mongodb" },
+      { name: "SQL",        icon: "sql",        platform: "both" },
+      { name: "PostgreSQL", icon: "postgresql", platform: "both" },
+      { name: "MySQL",      icon: "mysql",      platform: "web"  },
+      { name: "MongoDB",    icon: "mongodb",    platform: "both" },
     ],
   },
   {
@@ -51,16 +52,16 @@ const categories = [
     accent: "16, 185, 129",
     color: "#10b981",
     techs: [
-      { name: "Git / GitHub", icon: "github" },
+      { name: "Git / GitHub", icon: "github", platform: "both" },
     ],
   },
 ];
 
 const icons: Record<string, string> = {
   html: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M7 5L10.2 41L24 45L37.8 41L41 5H7Z" fill="#E34F26"/><path d="M24 42V8H37.8L35.2 39L24 42Z" fill="#EF652A"/><path d="M12.5 14H35.5L34.8 22H20L20.7 29H34L32.8 40L24 42.5L15.2 40L14.5 32H20.5L20.9 36L24 37L27.1 36L27.5 31H14.5L12.5 14Z" fill="white"/></svg>`,
-  css: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M7 5L10.2 41L24 45L37.8 41L41 5H7Z" fill="#264DE4"/><path d="M24 42V8H37.8L35.2 39L24 42Z" fill="#2965F1"/><path d="M13 14H35L34.3 22.5H20L20.5 27H34L32.5 41L24 43.5L15.5 41L15 33H21L21.3 36.5L24 37.5L26.7 36.5L27.2 31H14.5L13 14Z" fill="white"/></svg>`,
-  js: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#F7DF1E"/><path d="M13.5 38L16.8 36.1C17.4 37.3 17.9 38.4 19.3 38.4C20.7 38.4 21.6 37.8 21.6 35.5V22H25.4V35.6C25.4 40 23 42 19.5 42C16.3 42 14.5 40.3 13.5 38Z" fill="#323330"/><path d="M27.8 37.5L31.1 35.7C31.8 36.9 32.9 37.8 34.7 37.8C36.3 37.8 37.3 37 37.3 35.9C37.3 34.6 36.2 34.1 34.5 33.3L33.6 32.9C30.9 31.7 29.1 30.3 29.1 27C29.1 24 31.4 21.8 34.9 21.8C37.3 21.8 39 22.7 40.1 24.6L36.9 26.5C36.3 25.4 35.6 24.9 34.7 24.9C33.7 24.9 33 25.5 33 26.5C33 27.7 33.7 28.2 35.3 28.9L36.2 29.3C39.4 30.7 41.2 32.1 41.2 35.5C41.2 39.2 38.4 42 34.6 42C31 42 28.6 40.2 27.8 37.5Z" fill="#323330"/></svg>`,
-  ts: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#3178C6"/><path d="M28 31V33.7C28.6 34 29.3 34.3 30.1 34.4C30.9 34.6 31.8 34.7 32.7 34.7C33.6 34.7 34.4 34.6 35.1 34.4C35.8 34.1 36.4 33.8 36.9 33.3C37.4 32.9 37.7 32.3 38 31.7C38.2 31.1 38.3 30.3 38.3 29.5C38.3 28.8 38.2 28.2 38.1 27.7C37.9 27.2 37.6 26.7 37.2 26.3C36.8 25.9 36.4 25.6 35.9 25.3C35.4 25 34.8 24.8 34.2 24.5C33.7 24.4 33.3 24.2 32.9 24C32.6 23.9 32.3 23.7 32.1 23.6C31.9 23.4 31.7 23.3 31.6 23.1C31.5 22.9 31.4 22.7 31.4 22.4C31.4 22.1 31.5 21.9 31.7 21.7C31.9 21.5 32.1 21.3 32.3 21.2C32.6 21.1 32.9 21 33.2 21C33.5 21 33.8 21 34.2 21.1C34.6 21.2 34.9 21.3 35.3 21.5C35.7 21.7 36 21.9 36.4 22.2V19.5C36 19.3 35.5 19.1 35 19C34.5 18.9 33.9 18.8 33.2 18.8C32.3 18.8 31.5 18.9 30.7 19.2C30 19.5 29.3 19.9 28.8 20.4C28.3 20.9 27.9 21.5 27.6 22.1C27.3 22.8 27.2 23.5 27.2 24.3C27.2 25.4 27.5 26.3 28.1 27C28.7 27.7 29.6 28.3 30.8 28.7C31.3 28.9 31.8 29.1 32.2 29.3C32.6 29.5 33 29.7 33.3 29.9C33.6 30.1 33.8 30.4 34 30.6C34.1 30.9 34.2 31.2 34.2 31.5C34.2 31.8 34.1 32.1 34 32.3C33.8 32.5 33.6 32.7 33.4 32.8C33.1 32.9 32.9 33 32.6 33.1C32.3 33.1 32 33.2 31.7 33.2C31 33.2 30.3 33.1 29.6 32.8C28.9 32.5 28.4 32 28 31ZM22 21.5H26.5V19H13V21.5H17.5V35H22V21.5Z" fill="white"/></svg>`,
+  css:  `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M7 5L10.2 41L24 45L37.8 41L41 5H7Z" fill="#264DE4"/><path d="M24 42V8H37.8L35.2 39L24 42Z" fill="#2965F1"/><path d="M13 14H35L34.3 22.5H20L20.5 27H34L32.5 41L24 43.5L15.5 41L15 33H21L21.3 36.5L24 37.5L26.7 36.5L27.2 31H14.5L13 14Z" fill="white"/></svg>`,
+  js:   `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#F7DF1E"/><path d="M13.5 38L16.8 36.1C17.4 37.3 17.9 38.4 19.3 38.4C20.7 38.4 21.6 37.8 21.6 35.5V22H25.4V35.6C25.4 40 23 42 19.5 42C16.3 42 14.5 40.3 13.5 38Z" fill="#323330"/><path d="M27.8 37.5L31.1 35.7C31.8 36.9 32.9 37.8 34.7 37.8C36.3 37.8 37.3 37 37.3 35.9C37.3 34.6 36.2 34.1 34.5 33.3L33.6 32.9C30.9 31.7 29.1 30.3 29.1 27C29.1 24 31.4 21.8 34.9 21.8C37.3 21.8 39 22.7 40.1 24.6L36.9 26.5C36.3 25.4 35.6 24.9 34.7 24.9C33.7 24.9 33 25.5 33 26.5C33 27.7 33.7 28.2 35.3 28.9L36.2 29.3C39.4 30.7 41.2 32.1 41.2 35.5C41.2 39.2 38.4 42 34.6 42C31 42 28.6 40.2 27.8 37.5Z" fill="#323330"/></svg>`,
+  ts:   `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#3178C6"/><path d="M28 31V33.7C28.6 34 29.3 34.3 30.1 34.4C30.9 34.6 31.8 34.7 32.7 34.7C33.6 34.7 34.4 34.6 35.1 34.4C35.8 34.1 36.4 33.8 36.9 33.3C37.4 32.9 37.7 32.3 38 31.7C38.2 31.1 38.3 30.3 38.3 29.5C38.3 28.8 38.2 28.2 38.1 27.7C37.9 27.2 37.6 26.7 37.2 26.3C36.8 25.9 36.4 25.6 35.9 25.3C35.4 25 34.8 24.8 34.2 24.5C33.7 24.4 33.3 24.2 32.9 24C32.6 23.9 32.3 23.7 32.1 23.6C31.9 23.4 31.7 23.3 31.6 23.1C31.5 22.9 31.4 22.7 31.4 22.4C31.4 22.1 31.5 21.9 31.7 21.7C31.9 21.5 32.1 21.3 32.3 21.2C32.6 21.1 32.9 21 33.2 21C33.5 21 33.8 21 34.2 21.1C34.6 21.2 34.9 21.3 35.3 21.5C35.7 21.7 36 21.9 36.4 22.2V19.5C36 19.3 35.5 19.1 35 19C34.5 18.9 33.9 18.8 33.2 18.8C32.3 18.8 31.5 18.9 30.7 19.2C30 19.5 29.3 19.9 28.8 20.4C28.3 20.9 27.9 21.5 27.6 22.1C27.3 22.8 27.2 23.5 27.2 24.3C27.2 25.4 27.5 26.3 28.1 27C28.7 27.7 29.6 28.3 30.8 28.7C31.3 28.9 31.8 29.1 32.2 29.3C32.6 29.5 33 29.7 33.3 29.9C33.6 30.1 33.8 30.4 34 30.6C34.1 30.9 34.2 31.2 34.2 31.5C34.2 31.8 34.1 32.1 34 32.3C33.8 32.5 33.6 32.7 33.4 32.8C33.1 32.9 32.9 33 32.6 33.1C32.3 33.1 32 33.2 31.7 33.2C31 33.2 30.3 33.1 29.6 32.8C28.9 32.5 28.4 32 28 31ZM22 21.5H26.5V19H13V21.5H17.5V35H22V21.5Z" fill="white"/></svg>`,
   react: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="4" fill="#61DAFB"/><ellipse cx="24" cy="24" rx="19" ry="7.5" stroke="#61DAFB" stroke-width="2" fill="none"/><ellipse cx="24" cy="24" rx="19" ry="7.5" stroke="#61DAFB" stroke-width="2" fill="none" transform="rotate(60 24 24)"/><ellipse cx="24" cy="24" rx="19" ry="7.5" stroke="#61DAFB" stroke-width="2" fill="none" transform="rotate(120 24 24)"/></svg>`,
   nextjs: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="21" fill="#000"/><path d="M14 34V14.5L33 34.5V14" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   expo: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M9 32C13 24 18.5 17 24 12C29.5 17 35 24 39 32" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M16 32C18.5 27 21 23 24 19C27 23 29.5 27 32 32" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`,
@@ -95,6 +96,7 @@ const icons: Record<string, string> = {
       </p>
     </div>
 
+    <!-- ─── Platform Toggle ─── -->
     <!-- ─── Tab Nav ─── -->
     <div class="tabs-wrapper reveal reveal-delay-1">
       <nav class="tabs-nav" id="techTabs" role="tablist">
@@ -108,7 +110,7 @@ const icons: Record<string, string> = {
           >
             <span class="tab-pip"></span>
             <span class="tab-label">{cat.name}</span>
-            <span class="tab-count">{cat.techs.length}</span>
+            <span class="tab-count" data-cat={cat.id}>{cat.techs.length}</span>
           </button>
         ))}
       </nav>
@@ -143,16 +145,72 @@ const icons: Record<string, string> = {
 </section>
 
 <style>
-/* ──────────────────────────────────────
-   SECTION
-────────────────────────────────────── */
+/* ─── Section ─── */
 .tech-section { position: relative; overflow: hidden; }
 
-/* ──────────────────────────────────────
-   TABS WRAPPER
-────────────────────────────────────── */
+/* ─────────────────────────────────────
+   PLATFORM TOGGLE
+───────────────────────────────────── */
+.platform-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.platform-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+}
+
+.plat-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.83rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.22s ease;
+  white-space: nowrap;
+}
+
+.plat-btn svg { flex-shrink: 0; transition: color 0.22s; }
+.plat-btn:hover { color: var(--text-primary); }
+.plat-btn.active { color: var(--text-primary); font-weight: 600; }
+
+/* Sliding pill */
+.plat-slider {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), width 0.3s cubic-bezier(0.16,1,0.3,1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────
+   TABS
+───────────────────────────────────── */
 .tabs-wrapper {
-  margin-top: 3.5rem;
+  margin-top: 1.25rem;
   display: flex;
   justify-content: center;
 }
@@ -161,23 +219,22 @@ const icons: Record<string, string> = {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.4rem;
-  padding: 6px;
-  background: rgba(255,255,255,0.025);
-  border: 1px solid rgba(255,255,255,0.08);
+  gap: 0.35rem;
+  padding: 5px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
   border-radius: 999px;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
 }
 
-/* ── Tab button ── */
 .tab-btn {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 1.15rem;
+  gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
   border-radius: 999px;
-  font-size: 0.82rem;
+  font-size: 0.81rem;
   font-weight: 500;
   font-family: var(--font-sans);
   color: var(--text-secondary);
@@ -189,8 +246,7 @@ const icons: Record<string, string> = {
 }
 
 .tab-pip {
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--color);
   opacity: 0.3;
@@ -199,181 +255,241 @@ const icons: Record<string, string> = {
 }
 
 .tab-count {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-family: var(--font-mono);
-  background: rgba(var(--accent), 0.15);
+  background: rgba(var(--accent), 0.14);
   color: var(--color);
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 999px;
-  opacity: 0;
   transition: opacity 0.2s;
+  min-width: 18px;
+  text-align: center;
 }
 
 .tab-btn:hover { color: var(--text-primary); }
 .tab-btn:hover .tab-pip { opacity: 0.6; }
 
 .tab-btn.active {
-  background: rgba(var(--accent), 0.14);
+  background: rgba(var(--accent), 0.13);
   color: var(--color);
-  box-shadow: 0 0 0 1px rgba(var(--accent), 0.28), 0 2px 12px rgba(var(--accent), 0.12);
+  box-shadow: 0 0 0 1px rgba(var(--accent), 0.26), 0 2px 10px rgba(var(--accent), 0.1);
 }
-.tab-btn.active .tab-pip   { opacity: 1; }
-.tab-btn.active .tab-count { opacity: 1; }
+.tab-btn.active .tab-pip { opacity: 1; }
 
-/* ──────────────────────────────────────
+/* ─────────────────────────────────────
    PANELS
-────────────────────────────────────── */
-.panels-root {
-  position: relative;
-  margin-top: 2.5rem;
-  min-height: 300px;
-}
+───────────────────────────────────── */
+.panels-root { margin-top: 2rem; min-height: 280px; }
 
-.tech-panel {
-  display: none;
-}
+.tech-panel { display: none; }
 .tech-panel.active {
   display: block;
-  animation: panelIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: panelIn 0.35s cubic-bezier(0.16,1,0.3,1) both;
 }
 
 @keyframes panelIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
 }
 
-/* ──────────────────────────────────────
+/* ─────────────────────────────────────
    CARDS GRID
-────────────────────────────────────── */
+───────────────────────────────────── */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(2,1fr);
+  gap: 0.9rem;
 }
+@media (min-width:420px){ .cards-grid{ grid-template-columns:repeat(3,1fr); } }
+@media (min-width:600px){ .cards-grid{ grid-template-columns:repeat(4,1fr); } }
+@media (min-width:900px){ .cards-grid{ grid-template-columns:repeat(5,1fr); } }
 
-@media (min-width: 420px) { .cards-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 600px) { .cards-grid { grid-template-columns: repeat(4, 1fr); } }
-@media (min-width: 900px) { .cards-grid { grid-template-columns: repeat(5, 1fr); } }
-
-/* ──────────────────────────────────────
+/* ─────────────────────────────────────
    TECH CARD
-────────────────────────────────────── */
-.t-card {
-  animation: cardPop 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: var(--d, 0s);
-}
-
-@keyframes cardPop {
-  from { opacity: 0; transform: scale(0.82) translateY(14px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-/* Card inner — built directly on .t-card children via pseudo */
+───────────────────────────────────── */
 .t-card {
   position: relative;
   border-radius: 18px;
-  background: rgba(255,255,255,0.035);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 1.75rem 1rem 1.25rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  padding: 1.6rem 1rem 1.15rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.8rem;
   cursor: default;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1),
-              border-color 0.25s,
-              background 0.25s,
-              box-shadow 0.3s;
+  animation: cardPop 0.42s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: var(--d,0s);
+  transition: transform 0.28s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.25s, background 0.25s, box-shadow 0.28s, opacity 0.25s;
 }
 
-/* Shine sweep */
+.t-card.hidden {
+  display: none;
+}
+
+@keyframes cardPop {
+  from { opacity:0; transform:scale(0.82) translateY(14px); }
+  to   { opacity:1; transform:scale(1)    translateY(0); }
+}
+
 .t-card-shine {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
-  pointer-events: none;
-  border-radius: inherit;
+  position: absolute; inset:0;
+  background: linear-gradient(135deg, var(--border-glass-hover) 0%, transparent 60%);
+  pointer-events:none; border-radius:inherit;
 }
 
-/* Radial glow on hover */
 .t-card-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(var(--accent), 0.18) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.35s;
-  pointer-events: none;
-  border-radius: inherit;
+  position: absolute; inset:0;
+  background: radial-gradient(ellipse at 50% 0%,rgba(var(--accent),0.18) 0%,transparent 70%);
+  opacity:0; transition:opacity 0.32s; pointer-events:none; border-radius:inherit;
 }
 
 .t-card:hover {
   transform: translateY(-6px) scale(1.03);
-  background: rgba(var(--accent), 0.06);
-  border-color: rgba(var(--accent), 0.35);
-  box-shadow:
-    0 16px 40px rgba(var(--accent), 0.14),
-    0 0 0 1px rgba(var(--accent), 0.2),
-    inset 0 1px 0 rgba(255,255,255,0.08);
+  background: rgba(var(--accent),0.06);
+  border-color: rgba(var(--accent),0.35);
+  box-shadow: 0 14px 36px rgba(var(--accent),0.14),
+              0 0 0 1px rgba(var(--accent),0.18),
+              inset 0 1px 0 var(--border-glass);
+}
+.t-card:hover .t-card-glow { opacity:1; }
+
+/* Platform badge */
+.t-badge {
+  position: absolute;
+  top: 8px; right: 8px;
+  font-size: 0.55rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
-.t-card:hover .t-card-glow { opacity: 1; }
+.t-badge[data-plat="web"]    { background: rgba(99,102,241,0.18); color:#818cf8; }
+.t-badge[data-plat="mobile"] { background: rgba(16,185,129,0.18); color:#34d399; }
+.t-badge[data-plat="both"]   { display:none; }
+
+.platform-toggle[data-active="web"]    .t-badge,
+.platform-toggle[data-active="mobile"] .t-badge { opacity:1; }
 
 /* Icon */
 .t-icon {
-  position: relative;
-  z-index: 1;
-  width: 58px;
-  height: 58px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative; z-index:1;
+  width: 58px; height: 58px;
+  display:flex; align-items:center; justify-content:center;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
 }
-
 .t-card:hover .t-icon {
   transform: scale(1.15) translateY(-2px);
-  filter: drop-shadow(0 6px 16px rgba(var(--accent), 0.4));
+  filter: drop-shadow(0 6px 16px rgba(var(--accent),0.4));
 }
-
-.t-icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
+.t-icon svg { width:100%; height:100%; display:block; }
 
 /* Name */
 .t-name {
-  position: relative;
-  z-index: 1;
-  font-size: 0.76rem;
-  font-weight: 500;
-  font-family: var(--font-sans);
-  color: rgba(255,255,255,0.5);
-  text-align: center;
-  line-height: 1.3;
-  transition: color 0.2s;
-  margin: 0;
+  position:relative; z-index:1;
+  font-size:0.76rem; font-weight:500;
+  font-family:var(--font-sans);
+  color: var(--text-secondary);
+  text-align:center; line-height:1.3;
+  transition:color 0.2s; margin:0;
 }
+.t-card:hover .t-name { color: var(--text-primary); }
 
-.t-card:hover .t-name { color: rgba(255,255,255,0.9); }
+/* Empty state */
+.empty-state {
+  display:flex; flex-direction:column; align-items:center;
+  gap:0.75rem; padding:3rem 0; color:var(--text-muted);
+  font-size:0.85rem; font-family:var(--font-sans);
+}
 </style>
 
 <script>
-  const tabs   = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
-  const panels = document.querySelectorAll<HTMLDivElement>('.tech-panel');
+// ── Data mirrors (platform per card)
+const cats = [
+  { id:'frontend', techs: ['both','both','web','mobile','web','mobile','web','web'] },
+  { id:'backend',  techs: ['both','both','both','both','both','web','web'] },
+  { id:'database', techs: ['both','both','web','both'] },
+  { id:'tools',    techs: ['both'] },
+];
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      panels.forEach(p => { p.classList.remove('active'); });
+// ── Refs
+const platBtns   = document.querySelectorAll<HTMLButtonElement>('.plat-btn');
+const platSlider = document.getElementById('platSlider') as HTMLElement;
+const toggle     = document.getElementById('platformToggle') as HTMLElement;
+const tabs       = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+const panels     = document.querySelectorAll<HTMLDivElement>('.tech-panel');
 
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
+// ── Move slider to active button
+function moveSlider(btn: HTMLButtonElement) {
+  const nav   = btn.closest('.platform-toggle') as HTMLElement;
+  const navRect = nav.getBoundingClientRect();
+  const btnRect = btn.getBoundingClientRect();
+  platSlider.style.width  = btnRect.width  + 'px';
+  platSlider.style.transform = `translateX(${btnRect.left - navRect.left - 5}px)`;
+}
 
-      const panel = document.getElementById(`panel-${tab.dataset.tab}`);
-      if (panel) { panel.classList.add('active'); }
+// ── Filter cards
+function filterPlatform(platform: string) {
+  toggle.setAttribute('data-active', platform);
+
+  cats.forEach(cat => {
+    const grid    = document.getElementById(`grid-${cat.id}`)!;
+    const empty   = document.getElementById(`empty-${cat.id}`)!;
+    const cards   = grid.querySelectorAll<HTMLDivElement>('.t-card');
+    let visible   = 0;
+
+    cards.forEach((card, i) => {
+      const plat = cat.techs[i];
+      const show = platform === 'all' || plat === platform || plat === 'both';
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
     });
+
+    // Update tab count badge
+    const countBadge = document.querySelector<HTMLElement>(`.tab-count[data-cat="${cat.id}"]`);
+    if (countBadge) countBadge.textContent = String(visible);
+
+    // Empty state
+    empty.style.display = visible === 0 ? 'flex' : 'none';
+    grid.style.display  = visible === 0 ? 'none' : 'grid';
   });
+}
+
+// ── Platform buttons
+platBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    platBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    moveSlider(btn);
+    filterPlatform(btn.dataset.platform!);
+  });
+});
+
+// ── Tabs
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    panels.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    document.getElementById(`panel-${tab.dataset.tab}`)?.classList.add('active');
+  });
+});
+
+// ── Init slider on load
+window.addEventListener('DOMContentLoaded', () => {
+  const firstBtn = document.querySelector<HTMLButtonElement>('.plat-btn.active');
+  if (firstBtn) moveSlider(firstBtn);
+});
+// Also handle if already loaded
+const firstBtn = document.querySelector<HTMLButtonElement>('.plat-btn.active');
+if (firstBtn) moveSlider(firstBtn);
 </script>
