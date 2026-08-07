@@ -181,6 +181,107 @@ Databases: PostgreSQL + MongoDB`
     ]
   },
 
+  'landypos': {
+    id: 'landypos',
+    title: 'LandyPOS',
+    subtitle: 'Punto de Venta diseñado para operaciones rápidas',
+    description: [
+      'LandyPOS es un sistema de Punto de Venta (POS) rápido y optimizado para pantallas táctiles, diseñado para manejar alto volumen de transacciones en restaurantes y comercios minoristas.',
+      'Se conecta directamente a hardware local (impresoras térmicas ESC/POS y cajón de dinero) y ofrece sincronización en la nube con capacidades offline.'
+    ],
+    terminal: {
+      command: 'landypos --start',
+      output: `<span class="status-icon">🔌</span> Hardware   <span class="tech-tag">[ESC/POS]</span>    <span class="status-running">● Connected</span>
+<span class="status-icon">🏪</span> POS UI     <span class="tech-tag">[React + Vite]</span> <span class="status-running">● Active</span>  
+<span class="status-icon">☁️</span> Cloud Sync <span class="tech-tag">[Offline]</span>    <span class="status-running">● Synced</span>
+
+Printers: 2 active
+Local DB: IndexedDB`
+    },
+    stats: [
+      { icon: '⚡', value: '100%', label: 'Offline Ready' },
+      { icon: '🖨️', value: 'ESC', label: 'Impresión Local' },
+      { icon: '👆', value: 'Touch', label: 'Optimizada' }
+    ],
+    architecture: {
+      title: 'Local & Cloud',
+      subtitle: 'Sincronización en tiempo real y soporte offline',
+      type: 'PWA / POS',
+      cards: [
+        {
+          id: 'ui',
+          icon: '📱',
+          title: 'Interfaz POS',
+          subtitle: 'React + Vite',
+          features: ['Diseño Touch', 'Gestión Rápida', 'Soporte PWA', 'Manejo de Tickets']
+        },
+        {
+          id: 'hardware',
+          icon: '🖨️',
+          title: 'Hardware Local',
+          subtitle: 'Integración Web Serial',
+          features: ['Impresoras Térmicas', 'Comandos ESC/POS', 'Cajón de Dinero', 'Escáner de Código']
+        },
+        {
+          id: 'sync',
+          icon: '🔄',
+          title: 'Sincronización',
+          subtitle: 'Offline-First',
+          features: ['IndexedDB Local', 'Sincronización Background', 'Colas de Transacciones', 'Resolución de Conflictos']
+        }
+      ]
+    },
+    stack: [
+      {
+        category: 'Frontend & UI',
+        items: [
+          { icon: '⚛️', name: 'React' },
+          { icon: '🛠️', name: 'Vite' },
+          { icon: '📱', name: 'PWA' },
+          { icon: '🎨', name: 'TailwindCSS' }
+        ]
+      },
+      {
+        category: 'Hardware & Sync',
+        items: [
+          { icon: '🖨️', name: 'ESC/POS' },
+          { icon: '🌐', name: 'Web Serial API' },
+          { icon: '💾', name: 'IndexedDB' }
+        ]
+      }
+    ],
+    modules: [
+      {
+        icon: '📝',
+        title: 'Comandas',
+        description: 'Gestión rápida de pedidos y mesas.',
+        features: ['Mapa de mesas visual', 'División de cuentas', 'Modificadores de platillos', 'Envío a cocina']
+      },
+      {
+        icon: '💵',
+        title: 'Caja',
+        description: 'Control de flujo de efectivo y cobros.',
+        features: ['Apertura y cierre', 'Múltiples métodos de pago', 'Control de cajón', 'Tickets rápidos']
+      },
+      {
+        icon: '🖨️',
+        title: 'Impresión',
+        description: 'Motor de impresión local integrado.',
+        features: ['Tickets de venta', 'Comandas a cocina', 'Cortes de caja X/Z', 'Configuración multi-impresora']
+      }
+    ],
+    highlights: [
+      {
+        title: 'Offline-First',
+        description: 'El sistema puede seguir operando sin conexión a internet y sincronizar las ventas en background una vez que la red se restablece garantizando continuidad.'
+      },
+      {
+        title: 'Impresión ESC/POS Nativa',
+        description: 'Elimina el cuadro de diálogo de impresión del navegador web enviando comandos binarios crudos directamente a la impresora térmica mediante Web Serial API.'
+      }
+    ]
+  },
+
   'historias-en-papel': {
     id: 'historias-en-papel',
     title: 'Historias en Papel',
