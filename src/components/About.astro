@@ -1,182 +1,203 @@
 ---
 ---
 
-<section id="experiencia" class="section experience-section">
+<section id="sobre-mi" class="section about-section">
   <div class="container">
+
     <div class="section-header reveal">
-      <span class="section-label">// TRAYECTORIA PROFESIONAL</span>
-      <h2 class="section-title">Mi <span class="gradient-text">Experiencia</span></h2>
+      <span class="section-label">// CONÓCEME</span>
+      <h2 class="section-title">Sobre <span class="gradient-text">Mí</span></h2>
     </div>
 
-    <div class="experience-timeline reveal reveal-delay-1">
-      
-      <!-- VLIM Experience -->
-      <div class="timeline-item glass">
-        <div class="timeline-header">
-          <div class="role-company">
-            <h3>Desarrollador de Software</h3>
-            <span class="company">Vlim</span>
-          </div>
-          <div class="date-badge">Mayo 2026 - Agosto 2026</div>
+    <div class="about-wrap section-card reveal reveal-delay-1">
+
+      <!-- ── Columna izquierda: foto ── -->
+      <div class="about-col-left">
+        <div class="about-photo-frame">
+          <img src="/images/profile.jpg.JPG" alt="Uriel Hernández" class="about-photo" />
         </div>
-        
-        <div class="timeline-body">
-          <p class="summary">
-            Desarrollo de soluciones de consultoría integral para diversos clientes empleando múltiples stacks tecnológicos. Responsable del ciclo de vida completo de aplicaciones, desde la arquitectura hasta el despliegue, incluyendo mantenimiento evolutivo y correctivo de sistemas críticos.
-          </p>
-          
-          <ul class="achievements">
-            <li>
-              <strong>Biometría & Cloud:</strong> Arquitectura e implementación de un servicio de prueba de vida y validación de identidad utilizando Google Vision API, ML Kit y MediaPipe, desplegado sobre Google Cloud (Cloud Run, Cloud SQL).
-            </li>
-            <li>
-              <strong>LandySystem (ERP Empresarial):</strong> Desarrollo de un ecosistema ERP multi-tenant con arquitectura de microservicios (Moleculer, Node.js). Implementación de OCR con AWS Textract para automatización documental y generación de reportes financieros complejos.
-            </li>
-            <li>
-              <strong>LandyPOS (Punto de Venta):</strong> Creación de una aplicación POS táctil y optimizada offline con React y Vite. Integración directa con hardware local mediante Web Serial API para impresión térmica (ESC/POS) sin dependencias de red.
-            </li>
-            <li>
-              <strong>Historias en Papel:</strong> Ingeniería de un motor de importación masiva en PHP para el sistema corporativo. Integración de carga de archivos Excel (.xlsx) con validación estricta y protección anti-corrupción, procesando miles de registros simultáneamente sin alterar código legacy.
-            </li>
-          </ul>
-          
-          <div class="tech-stack">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">GCP</span>
-            <span class="tech-tag">AWS Textract</span>
-            <span class="tech-tag">Moleculer</span>
-            <span class="tech-tag">PHP</span>
-            <span class="tech-tag">PostgreSQL</span>
-          </div>
-        </div>
+
+
       </div>
-      
+
+      <!-- ── Columna derecha: texto + stats ── -->
+      <div class="about-col-right">
+
+        <div class="about-bio glass">
+          <p>Soy un desarrollador de software apasionado por la creación de soluciones tecnológicas innovadoras, comprometido con la calidad, la responsabilidad y el cumplimiento de objetivos.</p>
+          <p>Disfruto enfrentar desafíos, ya que considero que cada reto representa una oportunidad para fortalecer mis habilidades y generar un impacto positivo a través de la tecnología.</p>
+          <p>Trabajo con dedicación, perseverancia y una actitud orientada a la mejora continua. Me adapto con facilidad a nuevos entornos y me comprometo plenamente con cada proyecto.</p>
+        </div>
+
+        <div class="about-stats">
+          <div class="about-stat glass">
+            <span class="stat-num gradient-text">2+</span>
+            <span class="stat-lbl">Años de<br>experiencia</span>
+          </div>
+          <div class="about-stat glass">
+            <span class="stat-num gradient-text">3+</span>
+            <span class="stat-lbl">Proyectos<br>completados</span>
+          </div>
+          <div class="about-stat glass">
+            <span class="stat-num gradient-text">∞</span>
+            <span class="stat-lbl">Ganas de<br>aprender</span>
+          </div>
+        </div>
+
+      </div>
     </div>
+
   </div>
 </section>
 
 <style>
-  .experience-section {
+  .about-section {
     padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 6rem;
   }
 
-  .experience-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 900px;
+  /* ── Wrapper principal: 2 columnas ── */
+  .about-wrap {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 950px;
     margin: 0 auto;
   }
 
-  .timeline-item {
-    padding: 2.5rem;
-    border-radius: var(--radius-lg);
-    border-left: 4px solid var(--color-primary);
-    transition: var(--transition-base);
-  }
-
-  .timeline-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
-  }
-
-  .timeline-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .role-company h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 0 0.25rem 0;
-    color: var(--text-primary);
-  }
-
-  .company {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--color-primary);
-  }
-
-  .date-badge {
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--color-primary);
-    padding: 0.4rem 1rem;
-    border-radius: 100px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    font-family: var(--font-mono);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-  }
-
-  .summary {
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .achievements {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2rem 0;
+  /* ─────────── Columna izquierda ─────────── */
+  .about-col-left {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .about-photo-frame {
+    width: 220px;
+    height: 270px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid rgba(99, 102, 241, 0.35);
+    box-shadow:
+      0 0 35px rgba(99, 102, 241, 0.18),
+      0 20px 40px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+  }
+
+  .about-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  /* Badges debajo de la foto */
+  .about-badges {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .about-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #c7d2fe;
+  }
+
+  .badge-icon {
+    font-size: 0.9rem;
+  }
+
+  /* ─────────── Columna derecha ─────────── */
+  .about-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Bio */
+  .about-bio {
+    padding: 2rem 2.25rem;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .about-bio p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* Stats */
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
 
-  .achievements li {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    position: relative;
-    padding-left: 1.5rem;
-  }
-
-  .achievements li::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--color-primary);
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-
-  .achievements li strong {
-    color: var(--text-primary);
-    font-weight: 600;
-  }
-
-  .tech-stack {
+  .about-stat {
+    padding: 1.25rem 0.75rem;
+    border-radius: 16px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
   }
 
-  .tech-tag {
-    padding: 0.3rem 0.8rem;
-    background: var(--bg-surface-hover);
-    color: var(--text-primary);
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-family: var(--font-mono);
-    border: 1px solid var(--border-glass);
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
   }
 
+  .stat-lbl {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ─────────── Responsive ─────────── */
   @media (max-width: 768px) {
-    .timeline-item {
+    .about-wrap {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .about-col-left {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+    .about-photo-frame {
+      width: 120px;
+      height: 150px;
+      flex-shrink: 0;
+    }
+    .about-badges {
+      flex-direction: column;
+    }
+    .about-bio {
       padding: 1.5rem;
     }
-    .timeline-header {
-      flex-direction: column;
-      gap: 0.5rem;
+    .about-stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .stat-num {
+      font-size: 1.5rem;
     }
   }
 </style>
