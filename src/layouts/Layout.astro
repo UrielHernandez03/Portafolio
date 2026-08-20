@@ -4,16 +4,18 @@ import '../assets/global.css';
 interface Props {
   title?: string;
   description?: string;
+  lang?: string;
 }
 
 const {
   title = 'Uriel Hernández | Desarrollador Full-Stack',
   description = 'Portafolio de desarrollo — LandySystem: ERP/POS con arquitectura de microservicios, React, Node.js y más.',
+  lang = 'es',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

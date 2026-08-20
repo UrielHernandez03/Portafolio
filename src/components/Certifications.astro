@@ -1,0 +1,244 @@
+---
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    sectionLabel: "// CERTIFICADOS",
+    sectionTitle: "Mis <span class=\"gradient-text\">Certificaciones</span>",
+    badge: "CERTIFICACIÓN",
+    certifications: [
+      {
+        title: "Gestión de Proyectos y Fundamentos de metodología Agile",
+        issuer: "Santander Open Academy",
+        date: "Agosto 2026",
+        image: "/images/cert-agile.png"
+      },
+      {
+        title: "Prompting responsable: maximiza la IA en tu negocio",
+        issuer: "Santander Open Academy",
+        date: "Julio 2025",
+        image: "/images/cert-prompting.png"
+      },
+      {
+        title: "Fundamentos de ChatGPT",
+        issuer: "Santander Open Academy",
+        date: "Junio 2025",
+        image: "/images/cert-chatgpt.png"
+      },
+      {
+        title: "Scrum Fundamentals Certified",
+        issuer: "SCRUMstudy",
+        date: "Mayo 2026",
+        image: "/images/cert-scrum.png"
+      }
+    ]
+  },
+  en: {
+    sectionLabel: "// CERTIFICATES",
+    sectionTitle: "My <span class=\"gradient-text\">Certifications</span>",
+    badge: "CERTIFICATION",
+    certifications: [
+      {
+        title: "Project Management and Agile Methodology Fundamentals",
+        issuer: "Santander Open Academy",
+        date: "August 2026",
+        image: "/images/cert-agile.png"
+      },
+      {
+        title: "Responsible Prompting: Maximize AI in your business",
+        issuer: "Santander Open Academy",
+        date: "July 2025",
+        image: "/images/cert-prompting.png"
+      },
+      {
+        title: "ChatGPT Fundamentals",
+        issuer: "Santander Open Academy",
+        date: "June 2025",
+        image: "/images/cert-chatgpt.png"
+      },
+      {
+        title: "Scrum Fundamentals Certified",
+        issuer: "SCRUMstudy",
+        date: "May 2026",
+        image: "/images/cert-scrum.png"
+      }
+    ]
+  }
+}[lang as 'es' | 'en'] || t['es'];
+---
+
+<section id="certificados" class="section cert-section">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-label">{t.sectionLabel}</span>
+      <h2 class="section-title" set:html={t.sectionTitle}></h2>
+    </div>
+
+    <div class="cert-list">
+      {t.certifications.map((cert) => (
+        <a href={cert.image} download={`Certificado_${cert.issuer}.png`} class="cert-card-link reveal">
+          <div class="cert-card-inner glass">
+            
+            <div class="cert-thumbnail-wrapper">
+              <img src={cert.image} alt={cert.title} class="cert-thumbnail" />
+            </div>
+
+            <div class="cert-info">
+              <span class="cert-badge">{t.badge}</span>
+              <h3 class="cert-title">{cert.title}</h3>
+              <p class="cert-issuer">{cert.issuer}</p>
+              <p class="cert-date">{cert.date}</p>
+            </div>
+
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .cert-section {
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+  }
+
+  .cert-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cert-card-link {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .cert-card-link:hover {
+    transform: translateY(-5px);
+  }
+
+  .cert-card-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  [data-theme="light"] .cert-card-inner {
+    border: 1px solid var(--border-glass);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .cert-card-link:hover .cert-card-inner {
+    box-shadow: 0 0 45px rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.5);
+    background: rgba(99, 102, 241, 0.05);
+  }
+
+  [data-theme="light"] .cert-card-link:hover .cert-card-inner {
+    background: var(--bg-surface-hover);
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cert-thumbnail-wrapper {
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 8px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+
+  .cert-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+
+  .cert-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  .cert-badge {
+    background: var(--bg-glass);
+    color: var(--color-primary-light);
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    border: none;
+    display: inline-block;
+  }
+
+  .cert-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin: 0 0 0.6rem 0;
+  }
+
+  .cert-issuer {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .cert-date {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .cert-list {
+      grid-template-columns: 1fr;
+      max-width: 700px;
+    }
+    .cert-card-inner {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cert-card-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 2rem 1.5rem;
+    }
+    .cert-info {
+      align-items: center;
+    }
+  }
+</style>

@@ -30,6 +30,27 @@ interface Project {
   accentGlow: string;
 }
 
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    sectionLabel: "// PROYECTOS",
+    sectionTitle1: "Mis",
+    sectionTitle2: "Proyectos",
+    sectionSubtitle: "Soluciones de software desarrolladas de principio a fin con tecnologías modernas y arquitecturas escalables.",
+    featured: "Proyecto Destacado",
+    visitSite: "Visitar sitio"
+  },
+  en: {
+    sectionLabel: "// PROJECTS",
+    sectionTitle1: "My",
+    sectionTitle2: "Projects",
+    sectionSubtitle: "Software solutions developed from end-to-end with modern technologies and scalable architectures.",
+    featured: "Featured Project",
+    visitSite: "Visit Site"
+  }
+}[lang as 'es' | 'en'] || { sectionLabel: "", sectionTitle1: "", sectionTitle2: "", sectionSubtitle: "", featured: "", visitSite: "" };
+
 const projects: Project[] = [
   {
     id: 'landysystem',
@@ -124,10 +145,10 @@ const projects: Project[] = [
   <div class="container">
     <!-- Section Header -->
     <div class="section-header reveal">
-      <span class="section-label">// PROYECTOS</span>
-      <h2 class="section-title">Mis <span class="gradient-text">Proyectos</span></h2>
+      <span class="section-label">{t.sectionLabel}</span>
+      <h2 class="section-title">{t.sectionTitle1} <span class="gradient-text">{t.sectionTitle2}</span></h2>
       <p class="section-subtitle">
-        Soluciones de software desarrolladas de principio a fin con tecnologías modernas y arquitecturas escalables.
+        {t.sectionSubtitle}
       </p>
     </div>
 
@@ -173,7 +194,7 @@ const projects: Project[] = [
                   <img src={image.src} alt={image.alt} loading="lazy" />
                   <div class="image-overlay">
                     <span class="overlay-text">
-                      Visitar sitio
+                      {t.visitSite}
                       <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
                         <path
                           fill-rule="evenodd"
@@ -192,7 +213,7 @@ const projects: Project[] = [
           <div class="project-info">
             <div class="project-badge">
               <span class="badge-dot" style={`background: ${project.accentColor};`}></span>
-              Proyecto Destacado
+              {t.featured}
             </div>
 
             <h3 class="project-title">
@@ -531,9 +552,20 @@ const projects: Project[] = [
     transition: all var(--transition-fast);
   }
 
+  [data-theme="light"] .project-tag {
+    color: var(--color-primary);
+    background: rgba(99, 102, 241, 0.12);
+    border-color: rgba(99, 102, 241, 0.25);
+  }
+
   .project-tag:hover {
     background: rgba(99, 102, 241, 0.15);
     border-color: rgba(99, 102, 241, 0.35);
+  }
+
+  [data-theme="light"] .project-tag:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.4);
   }
 
   /* Links */

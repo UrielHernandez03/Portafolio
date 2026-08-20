@@ -1,12 +1,42 @@
 ---
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    sectionLabel: "// EXPERIENCIA",
+    sectionTitle: "Mi <span class=\"gradient-text\">Experiencia</span>",
+    role: "Desarrollador de Software",
+    company: "Vlim",
+    date: "Mayo 2026 - Agosto 2026",
+    moreInfo: "Más Información",
+    p1: "Desarrollo de soluciones de consultoría para distintos clientes y stacks tecnológicos, destacando un servicio de prueba de vida y validación de identidad con Google Vision API, ML Kit y MediaPipe sobre Google Cloud (Cloud Run, Cloud SQL); mantenimiento correctivo y evolutivo de sistemas en producción.",
+    p2: "Desarrollo y mejora de plataformas web empresariales, participando en módulos clave para comunidades, gestión de personal y operación interna.",
+    l1: "Desarrollo y mantenimiento de módulos de administración y usuario.",
+    l2: "Validación y sanitización de datos, mejora de formularios e interfaces responsivas.",
+    l3: "Depuración, pruebas funcionales, documentación técnica y mejora continua."
+  },
+  en: {
+    sectionLabel: "// EXPERIENCE",
+    sectionTitle: "My <span class=\"gradient-text\">Experience</span>",
+    role: "Software Developer",
+    company: "Vlim",
+    date: "May 2026 - August 2026",
+    moreInfo: "More Information",
+    p1: "Development of consulting solutions for different clients and technology stacks, highlighting a proof-of-life and identity validation service with Google Vision API, ML Kit, and MediaPipe on Google Cloud (Cloud Run, Cloud SQL); corrective and evolutionary maintenance of systems in production.",
+    p2: "Development and improvement of enterprise web platforms, participating in key modules for communities, personnel management, and internal operation.",
+    l1: "Development and maintenance of administration and user modules.",
+    l2: "Data validation and sanitization, improvement of forms and responsive interfaces.",
+    l3: "Debugging, functional testing, technical documentation, and continuous improvement."
+  }
+}[lang as 'es' | 'en'] || t['es'];
 ---
 
 <section id="experiencia" class="section experience-section">
   <div class="container">
 
     <div class="section-header reveal">
-      <span class="section-label">// EXPERIENCIA</span>
-      <h2 class="section-title">Mi <span class="gradient-text">Experiencia</span></h2>
+      <span class="section-label">{t.sectionLabel}</span>
+      <h2 class="section-title" set:html={t.sectionTitle}></h2>
     </div>
 
     <div class="exp-card glass reveal">
@@ -17,12 +47,12 @@
           <img src="/images/vlim.jpg" alt="Vlim" />
         </div>
         <div class="exp-meta">
-          <h3 class="exp-role">Desarrollador de Software</h3>
-          <span class="exp-company">Vlim</span>
-          <span class="exp-date">Mayo 2026 - Agosto 2026</span>
+          <h3 class="exp-role">{t.role}</h3>
+          <span class="exp-company">{t.company}</span>
+          <span class="exp-date">{t.date}</span>
         </div>
         <button class="exp-toggle" id="expToggle">
-          Más Información
+          {t.moreInfo}
           <svg class="exp-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"/>
           </svg>
@@ -32,15 +62,15 @@
       <!-- Contenido expandible -->
       <div class="exp-details" id="expDetails">
         <p class="exp-summary">
-          Desarrollo de soluciones de consultoría para distintos clientes y stacks tecnológicos, destacando un servicio de prueba de vida y validación de identidad con Google Vision API, ML Kit y MediaPipe sobre Google Cloud (Cloud Run, Cloud SQL); mantenimiento correctivo y evolutivo de sistemas en producción.
+          {t.p1}
         </p>
         <p class="exp-summary">
-          Desarrollo y mejora de plataformas web empresariales, participando en módulos clave para comunidades, gestión de personal y operación interna.
+          {t.p2}
         </p>
         <ul class="exp-bullets">
-          <li>Desarrollo y mantenimiento de módulos de administración y usuario.</li>
-          <li>Validación y sanitización de datos, mejora de formularios e interfaces responsivas.</li>
-          <li>Depuración, pruebas funcionales, documentación técnica y mejora continua.</li>
+          <li>{t.l1}</li>
+          <li>{t.l2}</li>
+          <li>{t.l3}</li>
         </ul>
         <div class="exp-tags">
           <span class="exp-tag">React</span>
@@ -230,6 +260,23 @@
     font-weight: 500;
     font-family: var(--font-mono, monospace);
     border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  [data-theme="light"] .exp-tag {
+    background: rgba(35, 83, 71, 0.08);
+    border-color: rgba(35, 83, 71, 0.2);
+    color: var(--color-primary);
+  }
+
+  [data-theme="light"] .exp-toggle {
+    background: rgba(35, 83, 71, 0.1);
+    border-color: rgba(35, 83, 71, 0.25);
+    color: var(--text-primary);
+  }
+  
+  [data-theme="light"] .exp-toggle:hover {
+    background: rgba(35, 83, 71, 0.2);
+    border-color: rgba(35, 83, 71, 0.4);
   }
 
   @media (max-width: 640px) {
