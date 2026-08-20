@@ -1,11 +1,40 @@
 ---
-// Technologies.astro — Toggle Web/Móvil + tabs por categoría
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    sectionLabel: "// STACK TECNOLÓGICO",
+    sectionTitle: "Mi <span class=\"gradient-text\">Stack</span>",
+    sectionSubtitle: "Herramientas y lenguajes que domino para construir soluciones digitales modernas, escalables y de alto rendimiento.",
+    catFrontend: "Frontend y móvil",
+    catBackend: "Backend y desarrollo",
+    catDatabase: "Bases de datos",
+    catTools: "Herramientas",
+  },
+  en: {
+    sectionLabel: "// TECH STACK",
+    sectionTitle: "My <span class=\"gradient-text\">Stack</span>",
+    sectionSubtitle: "Tools and languages I master to build modern, scalable, and high-performance digital solutions.",
+    catFrontend: "Frontend & Mobile",
+    catBackend: "Backend & Dev",
+    catDatabase: "Databases",
+    catTools: "Tools",
+  }
+}[lang as 'es' | 'en'] || {
+    sectionLabel: "// STACK TECNOLÓGICO",
+    sectionTitle: "Mi <span class=\"gradient-text\">Stack</span>",
+    sectionSubtitle: "Herramientas y lenguajes que domino para construir soluciones digitales modernas, escalables y de alto rendimiento.",
+    catFrontend: "Frontend y móvil",
+    catBackend: "Backend y desarrollo",
+    catDatabase: "Bases de datos",
+    catTools: "Herramientas",
+};
 
 // platform: 'both' | 'web' | 'mobile'
 const categories = [
   {
     id: "frontend",
-    name: "Frontend y móvil",
+    name: t.catFrontend,
     accent: "99, 102, 241",
     color: "#6366f1",
     techs: [
@@ -21,7 +50,7 @@ const categories = [
   },
   {
     id: "backend",
-    name: "Backend y desarrollo",
+    name: t.catBackend,
     accent: "139, 92, 246",
     color: "#8b5cf6",
     techs: [
@@ -36,7 +65,7 @@ const categories = [
   },
   {
     id: "database",
-    name: "Bases de datos",
+    name: t.catDatabase,
     accent: "6, 182, 212",
     color: "#06b6d4",
     techs: [
@@ -48,7 +77,7 @@ const categories = [
   },
   {
     id: "tools",
-    name: "Herramientas",
+    name: t.catTools,
     accent: "16, 185, 129",
     color: "#10b981",
     techs: [
@@ -61,7 +90,7 @@ const icons: Record<string, string> = {
   html: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M7 5L10.2 41L24 45L37.8 41L41 5H7Z" fill="#E34F26"/><path d="M24 42V8H37.8L35.2 39L24 42Z" fill="#EF652A"/><path d="M12.5 14H35.5L34.8 22H20L20.7 29H34L32.8 40L24 42.5L15.2 40L14.5 32H20.5L20.9 36L24 37L27.1 36L27.5 31H14.5L12.5 14Z" fill="white"/></svg>`,
   css:  `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M7 5L10.2 41L24 45L37.8 41L41 5H7Z" fill="#264DE4"/><path d="M24 42V8H37.8L35.2 39L24 42Z" fill="#2965F1"/><path d="M13 14H35L34.3 22.5H20L20.5 27H34L32.5 41L24 43.5L15.5 41L15 33H21L21.3 36.5L24 37.5L26.7 36.5L27.2 31H14.5L13 14Z" fill="white"/></svg>`,
   js:   `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#F7DF1E"/><path d="M13.5 38L16.8 36.1C17.4 37.3 17.9 38.4 19.3 38.4C20.7 38.4 21.6 37.8 21.6 35.5V22H25.4V35.6C25.4 40 23 42 19.5 42C16.3 42 14.5 40.3 13.5 38Z" fill="#323330"/><path d="M27.8 37.5L31.1 35.7C31.8 36.9 32.9 37.8 34.7 37.8C36.3 37.8 37.3 37 37.3 35.9C37.3 34.6 36.2 34.1 34.5 33.3L33.6 32.9C30.9 31.7 29.1 30.3 29.1 27C29.1 24 31.4 21.8 34.9 21.8C37.3 21.8 39 22.7 40.1 24.6L36.9 26.5C36.3 25.4 35.6 24.9 34.7 24.9C33.7 24.9 33 25.5 33 26.5C33 27.7 33.7 28.2 35.3 28.9L36.2 29.3C39.4 30.7 41.2 32.1 41.2 35.5C41.2 39.2 38.4 42 34.6 42C31 42 28.6 40.2 27.8 37.5Z" fill="#323330"/></svg>`,
-  ts:   `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#3178C6"/><path d="M28 31V33.7C28.6 34 29.3 34.3 30.1 34.4C30.9 34.6 31.8 34.7 32.7 34.7C33.6 34.7 34.4 34.6 35.1 34.4C35.8 34.1 36.4 33.8 36.9 33.3C37.4 32.9 37.7 32.3 38 31.7C38.2 31.1 38.3 30.3 38.3 29.5C38.3 28.8 38.2 28.2 38.1 27.7C37.9 27.2 37.6 26.7 37.2 26.3C36.8 25.9 36.4 25.6 35.9 25.3C35.4 25 34.8 24.8 34.2 24.5C33.7 24.4 33.3 24.2 32.9 24C32.6 23.9 32.3 23.7 32.1 23.6C31.9 23.4 31.7 23.3 31.6 23.1C31.5 22.9 31.4 22.7 31.4 22.4C31.4 22.1 31.5 21.9 31.7 21.7C31.9 21.5 32.1 21.3 32.3 21.2C32.6 21.1 32.9 21 33.2 21C33.5 21 33.8 21 34.2 21.1C34.6 21.2 34.9 21.3 35.3 21.5C35.7 21.7 36 21.9 36.4 22.2V19.5C36 19.3 35.5 19.1 35 19C34.5 18.9 33.9 18.8 33.2 18.8C32.3 18.8 31.5 18.9 30.7 19.2C30 19.5 29.3 19.9 28.8 20.4C28.3 20.9 27.9 21.5 27.6 22.1C27.3 22.8 27.2 23.5 27.2 24.3C27.2 25.4 27.5 26.3 28.1 27C28.7 27.7 29.6 28.3 30.8 28.7C31.3 28.9 31.8 29.1 32.2 29.3C32.6 29.5 33 29.7 33.3 29.9C33.6 30.1 33.8 30.4 34 30.6C34.1 30.9 34.2 31.2 34.2 31.5C34.2 31.8 34.1 32.1 34 32.3C33.8 32.5 33.6 32.7 33.4 32.8C33.1 32.9 32.9 33 32.6 33.1C32.3 33.1 32 33.2 31.7 33.2C31 33.2 30.3 33.1 29.6 32.8C28.9 32.5 28.4 32 28 31ZM22 21.5H26.5V19H13V21.5H17.5V35H22V21.5Z" fill="white"/></svg>`,
+  ts:   `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#3178C6"/><path d="M28 31V33.7C28.6 34 29.3 34.3 30.1 34.4C30.9 34.6 31.8 34.7 32.7 34.7C33.6 34.7 34.4 34.6 35.1 34.4C35.8 34.1 36.4 33.8 36.9 33.3C37.4 32.9 37.7 32.3 38 31.7C38.2 31.1 38.3 30.3 38.3 29.5C38.3 28.8 38.2 28.2 38.1 27.7C37.9 27.2 37.6 26.7 37.2 26.3C36.8 25.9 36.4 25.6 35.9 25.3C35.4 25 34.8 24.8 34.2 24.5C33.7 24.4 33.3 24.2 32.9 24C32.6 23.9 32.3 23.7 32.1 23.6C31.9 23.4 31.7 23.3 31.6 23.1C31.5 22.9 31.4 22.7 31.4 22.4C31.4 22.1 31.5 21.9 31.7 21.7C31.9 21.5 32.1 21.3 32.3 21.2C32.6 21.1 32.9 21 33.2 21C33.5 21 33.8 21 34.2 21.1C34.6 21.2 34.9 21.3 35.3 21.5C35.7 21.7 36 21.9 36.4 22.2V19.5C36 19.3 35.5 19.1 35 19C34.5 18.9 33.9 18.8 33.2 18.8C32.3 18.8 31.5 18.9 30.7 19.2C30 19.5 29.3 19.9 28.8 20.4C28.3 20.9 27.9 21.5 27.6 22.1C27.3 22.8 27.2 23.5 27.2 24.3C27.2 25.4 27.5 26.3 28.1 27C28.7 27.7 29.6 28.3 30.8 28.7C31.3 28.9 31.8 29.1 32.2 29.3C32.6 29.5 33 29.7 33.3 29.9C33.6 30.1 33.8 30.4 34 30.6C34.1 30.9 34.2 31.5C34.2 31.8 34.1 32.1 34 32.3C33.8 32.5 33.6 32.7 33.4 32.8C33.1 32.9 32.9 33 32.6 33.1C32.3 33.1 32 33.2 31.7 33.2C31 33.2 30.3 33.1 29.6 32.8C28.9 32.5 28.4 32 28 31ZM22 21.5H26.5V19H13V21.5H17.5V35H22V21.5Z" fill="white"/></svg>`,
   react: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="4" fill="#61DAFB"/><ellipse cx="24" cy="24" rx="19" ry="7.5" stroke="#61DAFB" stroke-width="2" fill="none"/><ellipse cx="24" cy="24" rx="19" ry="7.5" stroke="#61DAFB" stroke-width="2" fill="none" transform="rotate(60 24 24)"/><ellipse cx="24" cy="24" rx="19" ry="7.5" stroke="#61DAFB" stroke-width="2" fill="none" transform="rotate(120 24 24)"/></svg>`,
   nextjs: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="21" fill="#000"/><path d="M14 34V14.5L33 34.5V14" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   expo: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M9 32C13 24 18.5 17 24 12C29.5 17 35 24 39 32" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M16 32C18.5 27 21 23 24 19C27 23 29.5 27 32 32" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`,
@@ -70,7 +99,7 @@ const icons: Record<string, string> = {
   moleculer: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="5" fill="#3EBBDF"/><circle cx="10" cy="14" r="3.5" fill="#3EBBDF" opacity="0.85"/><circle cx="38" cy="14" r="3.5" fill="#3EBBDF" opacity="0.85"/><circle cx="10" cy="34" r="3.5" fill="#3EBBDF" opacity="0.85"/><circle cx="38" cy="34" r="3.5" fill="#3EBBDF" opacity="0.85"/><line x1="24" y1="24" x2="10" y2="14" stroke="#3EBBDF" stroke-width="2" opacity="0.55"/><line x1="24" y1="24" x2="38" y2="14" stroke="#3EBBDF" stroke-width="2" opacity="0.55"/><line x1="24" y1="24" x2="10" y2="34" stroke="#3EBBDF" stroke-width="2" opacity="0.55"/><line x1="24" y1="24" x2="38" y2="34" stroke="#3EBBDF" stroke-width="2" opacity="0.55"/></svg>`,
   java: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M19 32C19 32 16 33.5 20 34.3C25 35.3 27.5 35.2 32.5 34C32.5 34 33.8 34.8 35.5 35.3C28.5 38.5 17 38 19 32Z" fill="#EA2D2E"/><path d="M17 29C17 29 13.8 31 17.5 31.7C23 32.5 29.5 32.5 36.5 30.8L37.5 31.8C30 34.5 14.5 34 17 29Z" fill="#EA2D2E"/><path d="M26 19C26 19 29.5 21.5 24.5 23.5C18.5 25.8 30 26.5 30 26.5C30 26.5 27 28.5 24 28C16.5 26.5 24 23 26 19Z" fill="#EA2D2E"/><path d="M30 37.5C30 37.5 31.5 38.8 28.5 39.7C23 41.3 11 41 15 39.2C16.5 38.5 19 38 19 38C19 38 18 37.4 16 37.5C10.5 38 7 40 12 41.2C21 43.5 35.5 41.5 30 37.5Z" fill="#EA2D2E"/><path d="M20 7C20 7 24.5 9.8 19 13.5C14.5 16.5 18 18 18.5 19.5C16 18 14 16.5 15 14C17 11 22 10 20 7Z" fill="#5382A1"/></svg>`,
   python: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 6C15 6 15.5 10 15.5 10V14H24.5V15H12C12 15 6.5 14.5 6.5 24C6.5 33.5 11.5 33 11.5 33H14.5V28C14.5 28 14.3 23 19 23H29.5C29.5 23 33 23.3 33 19.5V10C33 10 33.5 6 24 6ZM19 10.5C20.1 10.5 21 11.4 21 12.5C21 13.6 20.1 14.5 19 14.5C17.9 14.5 17 13.6 17 12.5C17 11.4 17.9 10.5 19 10.5Z" fill="#3776AB"/><path d="M24 42C33 42 32.5 38 32.5 38V34H23.5V33H36C36 33 41.5 33.5 41.5 24C41.5 14.5 36.5 15 36.5 15H33.5V20C33.5 20 33.7 25 29 25H18.5C18.5 25 15 24.7 15 28.5V38C15 38 14.5 42 24 42ZM29 37.5C27.9 37.5 27 36.6 27 35.5C27 34.4 27.9 33.5 29 33.5C30.1 33.5 31 34.4 31 35.5C31 36.6 30.1 37.5 29 37.5Z" fill="#FFD43B"/></svg>`,
-  php: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="24" rx="21" ry="12" fill="#777BB4"/><path d="M13 18.5H17C19.5 18.5 21 20 21 22.5C21 25 19.5 26.5 17 26.5H15.5V30H13V18.5ZM15.5 24.5H16.8C18 24.5 18.8 23.9 18.8 22.5C18.8 21.1 18 20.5 16.8 20.5H15.5V24.5Z" fill="white"/><path d="M21.5 18.5H24L25.5 26.2L27 18.5H29.5L27.5 30H23.5L21.5 18.5Z" fill="white"/><path d="M30 18.5H34C36.5 18.5 38 20 38 22.5C38 25 36.5 26.5 34 26.5H32.5V30H30V18.5ZM32.5 24.5H33.8C35 24.5 35.8 23.9 35.8 22.5C35.8 21.1 35 20.5 33.8 20.5H32.5V24.5Z" fill="white"/></svg>`,
+  php: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="24" rx="21" ry="12" fill="#777BB4"/><path d="M13 18.5H17C19.5 18.5 21 20 21 22.5C21 25 19.5 26.5 17 26.5H15.5V30H13V18.5ZM15.5 24.5H16.8C18 24.5 18.8 23.9 18.8 22.5C18.8 21.1 18 20.5 16.8 20.5H15.5V24.5Z" fill="white"/><path d="M21.5 18.5H24L25.5 26.2L27 18.5H29.5L27.5 30H23.5L21.5 18.5Z" fill="white"/><path d="M30 18.5H34C36.5 18.5 38 20 38 22.5C38 25 36.5 26.5 34 26.5H32.5V30H30V18.5ZM32.5 24.5H33.8C35 24.5 35.8 23.9 35.8 22.5C35.8 21.1 35 20.5 33.8 20.5H32.5V24.5Z" fill="white"/><path d="M30 18.5H34C36.5 18.5 38 20 38 22.5C38 25 36.5 26.5 34 26.5H32.5V30H30V18.5ZM32.5 24.5H33.8C35 24.5 35.8 23.9 35.8 22.5C35.8 21.1 35 20.5 33.8 20.5H32.5V24.5Z" fill="white"/></svg>`,
   laravel: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M43 12L31.5 7.5L20 13.5L24.5 18L33 15L36 20L27.5 23L31 30L42 26L43 12Z" fill="#FF2D20"/><path d="M20 13.5L13 17L17 33L27.5 23L24.5 18L20 13.5Z" fill="#FF2D20" opacity="0.75"/><path d="M13 17L6 21L12 39L17 33L13 17Z" fill="#FF2D20" opacity="0.5"/></svg>`,
   sql: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="13" rx="15" ry="6" fill="#336791"/><rect x="9" y="13" width="30" height="8" fill="#336791"/><ellipse cx="24" cy="21" rx="15" ry="6" fill="#4A8BB5"/><rect x="9" y="21" width="30" height="8" fill="#336791" opacity="0.85"/><ellipse cx="24" cy="29" rx="15" ry="6" fill="#4A8BB5"/><rect x="9" y="29" width="30" height="6" fill="#336791" opacity="0.7"/><ellipse cx="24" cy="35" rx="15" ry="6" fill="#336791"/></svg>`,
   postgresql: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M38 18C38 11 31.7 6 24 6C16.3 6 10 11 10 18C10 23.7 13.7 28.5 19.5 30.5V40H24V30.7C30.6 29 38 24.2 38 18Z" fill="#336791"/><circle cx="19" cy="16.5" r="2.5" fill="white"/><circle cx="29" cy="16.5" r="2.5" fill="white"/><path d="M19 22.5C19 22.5 21 25.5 24 25.5C27 25.5 29 22.5 29 22.5" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/></svg>`,
@@ -88,11 +117,10 @@ const icons: Record<string, string> = {
 
     <!-- ─── Header ─── -->
     <div class="section-header reveal">
-      <span class="section-label">// STACK TECNOLÓGICO</span>
-      <h2 class="section-title">Mi <span class="gradient-text">Stack</span></h2>
+      <span class="section-label">{t.sectionLabel}</span>
+      <h2 class="section-title" set:html={t.sectionTitle}></h2>
       <p class="section-subtitle">
-        Herramientas y lenguajes que domino para construir soluciones digitales
-        modernas, escalables y de alto rendimiento.
+        {t.sectionSubtitle}
       </p>
     </div>
 
@@ -408,6 +436,32 @@ const icons: Record<string, string> = {
   display:flex; flex-direction:column; align-items:center;
   gap:0.75rem; padding:3rem 0; color:var(--text-muted);
   font-size:0.85rem; font-family:var(--font-sans);
+}
+
+/* ── LIGHT MODE OVERRIDES ── */
+[data-theme="light"] .plat-wrapper {
+  background: rgba(15,23,42,0.04);
+  border-color: rgba(15,23,42,0.08);
+}
+[data-theme="light"] .plat-slider {
+  background: rgba(15,23,42,0.08);
+  border-color: rgba(15,23,42,0.15);
+}
+[data-theme="light"] .tab-btn {
+  background: rgba(15,23,42,0.03);
+  border-color: rgba(15,23,42,0.06);
+}
+[data-theme="light"] .tab-btn.active {
+  background: rgba(15,23,42,0.1);
+  border-color: rgba(15,23,42,0.2);
+}
+[data-theme="light"] .t-badge[data-plat="web"] {
+  background: rgba(99,102,241,0.15);
+  color: #4f46e5;
+}
+[data-theme="light"] .t-badge[data-plat="mobile"] {
+  background: rgba(16,185,129,0.15);
+  color: #059669;
 }
 </style>
 

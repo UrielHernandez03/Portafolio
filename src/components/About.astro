@@ -1,12 +1,38 @@
 ---
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    sectionLabel: "// CONÓCEME",
+    sectionTitle: "Sobre",
+    sectionTitleHighlight: "Mí",
+    p1: "Soy un desarrollador de software apasionado por la creación de soluciones tecnológicas innovadoras, comprometido con la calidad, la responsabilidad y el cumplimiento de objetivos.",
+    p2: "Disfruto enfrentar desafíos, ya que considero que cada reto representa una oportunidad para fortalecer mis habilidades y generar un impacto positivo a través de la tecnología.",
+    p3: "Trabajo con dedicación, perseverancia y una actitud orientada a la mejora continua. Me adapto con facilidad a nuevos entornos y me comprometo plenamente con cada proyecto.",
+    stat1: "Años de<br>experiencia",
+    stat2: "Proyectos<br>completados",
+    stat3: "Certificaciones<br>obtenidas",
+  },
+  en: {
+    sectionLabel: "// GET TO KNOW ME",
+    sectionTitle: "About",
+    sectionTitleHighlight: "Me",
+    p1: "I am a software developer passionate about creating innovative technological solutions, committed to quality, responsibility, and achieving goals.",
+    p2: "I enjoy facing challenges, as I believe every challenge represents an opportunity to strengthen my skills and generate a positive impact through technology.",
+    p3: "I work with dedication, perseverance, and an attitude oriented towards continuous improvement. I adapt easily to new environments and fully commit to every project.",
+    stat1: "Years of<br>experience",
+    stat2: "Projects<br>completed",
+    stat3: "Certifications<br>earned",
+  }
+}[lang as 'es' | 'en'] || t['es'];
 ---
 
 <section id="sobre-mi" class="section about-section">
   <div class="container">
 
     <div class="section-header reveal">
-      <span class="section-label">// CONÓCEME</span>
-      <h2 class="section-title">Sobre <span class="gradient-text">Mí</span></h2>
+      <span class="section-label">{t.sectionLabel}</span>
+      <h2 class="section-title">{t.sectionTitle} <span class="gradient-text">{t.sectionTitleHighlight}</span></h2>
     </div>
 
     <div class="about-wrap section-card reveal reveal-delay-1">
@@ -24,23 +50,23 @@
       <div class="about-col-right">
 
         <div class="about-bio glass">
-          <p>Soy un desarrollador de software apasionado por la creación de soluciones tecnológicas innovadoras, comprometido con la calidad, la responsabilidad y el cumplimiento de objetivos.</p>
-          <p>Disfruto enfrentar desafíos, ya que considero que cada reto representa una oportunidad para fortalecer mis habilidades y generar un impacto positivo a través de la tecnología.</p>
-          <p>Trabajo con dedicación, perseverancia y una actitud orientada a la mejora continua. Me adapto con facilidad a nuevos entornos y me comprometo plenamente con cada proyecto.</p>
+          <p>{t.p1}</p>
+          <p>{t.p2}</p>
+          <p>{t.p3}</p>
         </div>
 
         <div class="about-stats">
           <div class="about-stat glass">
             <span class="stat-num gradient-text">2+</span>
-            <span class="stat-lbl">Años de<br>experiencia</span>
+            <span class="stat-lbl" set:html={t.stat1}></span>
           </div>
           <div class="about-stat glass">
             <span class="stat-num gradient-text">3+</span>
-            <span class="stat-lbl">Proyectos<br>completados</span>
+            <span class="stat-lbl" set:html={t.stat2}></span>
           </div>
           <div class="about-stat glass">
-            <span class="stat-num gradient-text">∞</span>
-            <span class="stat-lbl">Ganas de<br>aprender</span>
+            <span class="stat-num gradient-text">4</span>
+            <span class="stat-lbl" set:html={t.stat3}></span>
           </div>
         </div>
 
@@ -169,6 +195,24 @@
     color: var(--text-secondary);
     font-weight: 500;
     line-height: 1.4;
+  }
+
+  /* ─────────── LIGHT MODE OVERRIDES ─────────── */
+  [data-theme="light"] .about-photo-frame {
+    border-color: rgba(35, 83, 71, 0.35);
+    box-shadow: 0 0 35px rgba(35, 83, 71, 0.18), 0 20px 40px rgba(0,0,0,0.1);
+  }
+  [data-theme="light"] .about-badge {
+    background: rgba(35, 83, 71, 0.08);
+    border-color: rgba(35, 83, 71, 0.2);
+    color: var(--text-primary);
+  }
+  [data-theme="light"] .about-stat {
+    background: rgba(35, 83, 71, 0.08);
+    border-color: rgba(35, 83, 71, 0.2);
+  }
+  [data-theme="light"] .about-bio {
+    background: var(--bg-surface);
   }
 
   /* ─────────── Responsive ─────────── */

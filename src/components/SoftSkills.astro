@@ -1,14 +1,42 @@
 ---
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    sectionLabel: "// SOFT SKILLS",
+    sectionTitle: "Soft <span class=\"gradient-text\">Skills</span>",
+    sectionSubtitle: "Habilidades blandas que complementan el trabajo técnico con colaboración, claridad y entrega.",
+    skills: {
+      communication: "Comunicación",
+      teamwork: "Trabajo en equipo",
+      adaptability: "Adaptabilidad",
+      problemSolving: "Resolución de problemas",
+      responsibility: "Responsabilidad y compromiso"
+    }
+  },
+  en: {
+    sectionLabel: "// SOFT SKILLS",
+    sectionTitle: "Soft <span class=\"gradient-text\">Skills</span>",
+    sectionSubtitle: "Soft skills that complement technical work with collaboration, clarity, and delivery.",
+    skills: {
+      communication: "Communication",
+      teamwork: "Teamwork",
+      adaptability: "Adaptability",
+      problemSolving: "Problem Solving",
+      responsibility: "Responsibility & Commitment"
+    }
+  }
+}[lang as 'es' | 'en'] || t['es'];
 ---
 
 <section id="soft-skills" class="section ss-section">
   <div class="container">
 
     <div class="section-header reveal">
-      <span class="section-label">// SOFT SKILLS</span>
-      <h2 class="section-title">Soft <span class="gradient-text">Skills</span></h2>
+      <span class="section-label">{t.sectionLabel}</span>
+      <h2 class="section-title" set:html={t.sectionTitle}></h2>
       <p class="section-subtitle">
-        Habilidades blandas que complementan el trabajo técnico con colaboración, claridad y entrega.
+        {t.sectionSubtitle}
       </p>
     </div>
     <div class="reveal reveal-delay-1">
@@ -19,7 +47,7 @@
           <svg class="ss-pill-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
-          <span>Comunicación</span>
+          <span>{t.skills.communication}</span>
         </div>
 
         <!-- Trabajo en equipo -->
@@ -30,7 +58,7 @@
             <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
-          <span>Trabajo en equipo</span>
+          <span>{t.skills.teamwork}</span>
         </div>
 
         <!-- Adaptabilidad -->
@@ -40,7 +68,7 @@
             <polyline points="1 20 1 14 7 14"/>
             <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
           </svg>
-          <span>Adaptabilidad</span>
+          <span>{t.skills.adaptability}</span>
         </div>
 
         <!-- Resolución de problemas -->
@@ -50,7 +78,7 @@
             <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
             <line x1="12" y1="17" x2="12.01" y2="17"/>
           </svg>
-          <span>Resolución de problemas</span>
+          <span>{t.skills.problemSolving}</span>
         </div>
 
         <!-- Responsabilidad -->
@@ -58,7 +86,7 @@
           <svg class="ss-pill-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
-          <span>Responsabilidad y compromiso</span>
+          <span>{t.skills.responsibility}</span>
         </div>
 
       </div>
@@ -99,11 +127,26 @@
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
   }
 
+  [data-theme="light"] .ss-pill {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(99, 102, 241, 0.3);
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.1);
+  }
+
   .ss-pill:hover {
-    border-color: rgba(56, 189, 248, 0.8);
+    transform: translateY(-5px);
     background: rgba(15, 23, 42, 0.9);
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    border-color: rgba(56, 189, 248, 0.8);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+    color: #fff;
+  }
+
+  [data-theme="light"] .ss-pill:hover {
+    background: #ffffff;
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+    color: var(--color-primary);
   }
 
   .ss-pill-icon {

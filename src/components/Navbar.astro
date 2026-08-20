@@ -1,19 +1,46 @@
 ---
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    links: [
+      { text: 'Inicio', href: '/' },
+      { text: 'Sobre mí', href: '/#sobre-mi' },
+      { text: 'Proyectos', href: '/#proyectos' },
+      { text: 'Stack', href: '/#stack' },
+      { text: 'Soft skills', href: '/#soft-skills' },
+      { text: 'Experiencia', href: '/#experiencia' },
+      { text: 'Certificados', href: '/#certificados' }
+    ]
+  },
+  en: {
+    links: [
+      { text: 'Home', href: '/en/' },
+      { text: 'About me', href: '/en/#sobre-mi' },
+      { text: 'Projects', href: '/en/#proyectos' },
+      { text: 'Stack', href: '/en/#stack' },
+      { text: 'Soft skills', href: '/en/#soft-skills' },
+      { text: 'Experience', href: '/en/#experiencia' },
+      { text: 'Certificates', href: '/en/#certificados' }
+    ]
+  }
+}[lang as 'es' | 'en'] || { links: [] };
+
+const nextLang = lang === 'es' ? 'en' : 'es';
+const nextUrl = lang === 'es' ? '/en/' : '/';
+const langLabel = lang === 'es' ? 'EN' : 'ES';
 ---
 
 <header class="navbar" id="navbar">
   <div class="nav-container">
     <!-- Logo -->
-    <a href="/" class="logo gradient-text">UH</a>
+    <a href={t.links[0]?.href} class="logo gradient-text">UH</a>
 
     <!-- Desktop nav links -->
     <nav class="nav-links">
-      <a href="/"             class="nav-link">Inicio</a>
-      <a href="/#sobre-mi"    class="nav-link">Sobre mí</a>
-      <a href="/#proyectos"   class="nav-link">Proyectos</a>
-      <a href="/#stack"       class="nav-link">Stack</a>
-      <a href="/#soft-skills" class="nav-link">Soft skills</a>
-      <a href="/#experiencia" class="nav-link">Experiencia</a>
+      {t.links.map((link) => (
+        <a href={link.href} class="nav-link">{link.text}</a>
+      ))}
     </nav>
 
     <!-- Right controls: separator + lang + theme + hamburger -->
@@ -21,9 +48,9 @@
       <span class="nav-sep"></span>
 
       <!-- Language toggle -->
-      <button class="ctrl-btn lang-btn" id="langBtn" aria-label="Cambiar idioma" title="Language">
-        <span id="langLabel">ES</span>
-      </button>
+      <a href={nextUrl} class="ctrl-btn lang-btn" aria-label="Cambiar idioma" title="Language" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">
+        <span id="langLabel">{langLabel}</span>
+      </a>
 
       <!-- Theme toggle -->
       <button class="ctrl-btn theme-btn" id="themeBtn" aria-label="Cambiar tema">
@@ -56,16 +83,13 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/"             class="mobile-link">Inicio</a>
-    <a href="/#sobre-mi"    class="mobile-link">Sobre mí</a>
-    <a href="/#proyectos"   class="mobile-link">Proyectos</a>
-    <a href="/#stack"       class="mobile-link">Stack</a>
-    <a href="/#soft-skills" class="mobile-link">Soft skills</a>
-    <a href="/#experiencia" class="mobile-link">Experiencia</a>
+    {t.links.map((link) => (
+      <a href={link.href} class="mobile-link">{link.text}</a>
+    ))}
     <div class="mobile-controls">
-      <button class="ctrl-btn lang-btn" id="langBtnMobile" aria-label="Idioma">
-        <span id="langLabelMobile">ES</span>
-      </button>
+      <a href={nextUrl} class="ctrl-btn lang-btn" aria-label="Idioma" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">
+        <span id="langLabelMobile">{langLabel}</span>
+      </a>
       <button class="ctrl-btn theme-btn" id="themeBtnMobile" aria-label="Tema">
         <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -81,7 +105,7 @@
     top: 0;
     width: 100%;
     z-index: var(--z-nav, 100);
-    background: rgba(7, 7, 13, 0.5);
+    background: var(--bg-glass);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid transparent;
@@ -91,19 +115,10 @@
     align-items: center;
   }
 
-  [data-theme="light"] .navbar {
-    background: rgba(240, 242, 248, 0.6);
-  }
-
   .navbar.scrolled {
-    background: rgba(7, 7, 13, 0.88);
+    background: var(--bg-glass-hover);
     border-bottom: 1px solid var(--border-glass);
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-  }
-
-  [data-theme="light"] .navbar.scrolled {
-    background: rgba(240, 242, 248, 0.92);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-md);
   }
 
   .nav-container {
@@ -387,44 +402,5 @@
     applyTheme(next);
   });
 
-  /* ─────────────────── LANGUAGE ─────────────────── */
-  const texts = {
-    es: {
-      links: ['Inicio', 'Sobre mí', 'Proyectos', 'Stack', 'Soft skills', 'Experiencia'],
-      mobile: ['Inicio', 'Sobre mí', 'Proyectos', 'Stack', 'Soft skills', 'Experiencia'],
-    },
-    en: {
-      links: ['Home', 'About me', 'Projects', 'Stack', 'Soft skills', 'Experience'],
-      mobile: ['Home', 'About me', 'Projects', 'Stack', 'Soft skills', 'Experience'],
-    },
-  };
 
-  let currentLang = localStorage.getItem('lang') || 'es';
-
-  function applyLang(lang: string) {
-    currentLang = lang;
-    localStorage.setItem('lang', lang);
-    const t = texts[lang as keyof typeof texts];
-
-    const desktopLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-links .nav-link');
-    desktopLinks.forEach((el, i) => { if (t.links[i]) el.textContent = t.links[i]; });
-
-    const mobLinks = document.querySelectorAll<HTMLAnchorElement>('.mobile-link');
-    mobLinks.forEach((el, i) => { if (t.mobile[i]) el.textContent = t.mobile[i]; });
-
-    const label      = document.getElementById('langLabel');
-    const labelMob   = document.getElementById('langLabelMobile');
-    const display    = lang === 'es' ? 'ES' : 'EN';
-    if (label)    label.textContent    = display;
-    if (labelMob) labelMob.textContent = display;
-  }
-
-  applyLang(currentLang);
-
-  document.getElementById('langBtn')?.addEventListener('click', () => {
-    applyLang(currentLang === 'es' ? 'en' : 'es');
-  });
-  document.getElementById('langBtnMobile')?.addEventListener('click', () => {
-    applyLang(currentLang === 'es' ? 'en' : 'es');
-  });
 </script>

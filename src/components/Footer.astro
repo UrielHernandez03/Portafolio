@@ -1,4 +1,26 @@
 ---
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    desc: "Desarrollador Full-Stack especializado en arquitecturas escalables y sistemas empresariales.",
+    linksTitle: "Enlaces",
+    linkHome: "Inicio",
+    linkProjects: "Proyectos",
+    linkAbout: "Sobre mí",
+    contactTitle: "Contacto",
+    copyright: "Todos los derechos reservados."
+  },
+  en: {
+    desc: "Full-Stack Developer specialized in scalable architectures and enterprise systems.",
+    linksTitle: "Links",
+    linkHome: "Home",
+    linkProjects: "Projects",
+    linkAbout: "About me",
+    contactTitle: "Contact",
+    copyright: "All rights reserved."
+  }
+}[lang as 'es' | 'en'] || t['es'];
 ---
 
 <footer id="contacto" class="footer glass-static">
@@ -8,21 +30,21 @@
     <div class="footer-col brand-col">
       <a href="#" class="logo gradient-text">UH</a>
       <p class="brand-desc">
-        Desarrollador Full-Stack especializado en arquitecturas escalables y sistemas empresariales.
+        {t.desc}
       </p>
     </div>
     
     <div class="footer-col links-col">
-      <h3>Enlaces</h3>
+      <h3>{t.linksTitle}</h3>
       <nav class="footer-nav">
-        <a href="/">Inicio</a>
-        <a href="/#proyectos">Proyectos</a>
-        <a href="/#sobre-mi">Sobre mí</a>
+        <a href={lang === 'es' ? '/' : '/en/'}>{t.linkHome}</a>
+        <a href={lang === 'es' ? '/#proyectos' : '/en/#proyectos'}>{t.linkProjects}</a>
+        <a href={lang === 'es' ? '/#sobre-mi' : '/en/#sobre-mi'}>{t.linkAbout}</a>
       </nav>
     </div>
     
     <div class="footer-col contact-col">
-      <h3>Contacto</h3>
+      <h3>{t.contactTitle}</h3>
       <a href="mailto:joniortiz407@gmail.com" class="email-link">joniortiz407@gmail.com</a>
       <div class="social-links">
         <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -33,7 +55,7 @@
   
   <div class="footer-bottom">
     <p class="copyright">
-      &copy; 2025 Uriel Hernández. Todos los derechos reservados.
+      &copy; 2025 Uriel Hernández. {t.copyright}
     </p>
   </div>
 </footer>
