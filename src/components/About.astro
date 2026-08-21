@@ -25,6 +25,9 @@ const t = {
     stat3: "Certifications<br>earned",
   }
 }[lang as 'es' | 'en'] || t['es'];
+
+import { projectsData } from '../data/projectsData';
+const projectsCount = Object.keys(projectsData).length;
 ---
 
 <section id="sobre-mi" class="section about-section">
@@ -61,7 +64,7 @@ const t = {
             <span class="stat-lbl" set:html={t.stat1}></span>
           </div>
           <div class="about-stat glass">
-            <span class="stat-num gradient-text">3+</span>
+            <span class="stat-num gradient-text">{projectsCount}+</span>
             <span class="stat-lbl" set:html={t.stat2}></span>
           </div>
           <div class="about-stat glass">

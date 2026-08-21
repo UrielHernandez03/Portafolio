@@ -82,6 +82,10 @@ const categories = [
     color: "#10b981",
     techs: [
       { name: "Git / GitHub", icon: "github", platform: "both" },
+      { name: "Docker",       icon: "docker", platform: "both" },
+      { name: "AWS",          icon: "aws",    platform: "both" },
+      { name: "Linux",        icon: "linux",  platform: "both" },
+      { name: "Scrum",        icon: "scrum",  platform: "both" },
     ],
   },
 ];
@@ -106,6 +110,10 @@ const icons: Record<string, string> = {
   mysql: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 31C6 31 11 24 15 21C19 18 22 18 22 18L31.5 28C31.5 28 34.5 34.5 31.5 37C28.5 39.5 6 31 6 31Z" fill="#00758F"/><path d="M31.5 28L41.5 21C41.5 21 45.5 15 38.5 11.5C31.5 8 25.5 12.5 22 18L31.5 28Z" fill="#F29111"/><circle cx="37" cy="13" r="3.5" fill="#F29111" opacity="0.7"/></svg>`,
   mongodb: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C24 4 35 14.5 35 27C35 33.5 30 40 24 42C18 40 13 33.5 13 27C13 14.5 24 4 24 4Z" fill="#47A248"/><path d="M24 42V47" stroke="#47A248" stroke-width="3.5" stroke-linecap="round"/></svg>`,
   github: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C12.95 4 4 12.95 4 24C4 32.84 9.84 40.3 17.88 42.98C18.88 43.16 19.25 42.54 19.25 42.01V38.4C13.34 39.6 12.14 35.52 12.14 35.52C11.24 33.27 9.94 32.64 9.94 32.64C8.13 31.42 10.07 31.46 10.07 31.46C12.07 31.59 13.13 33.5 13.13 33.5C14.92 36.52 17.82 35.63 19.33 35.1C19.51 33.84 20.02 32.95 20.59 32.44C16.41 31.93 12.02 30.31 12.02 22.98C12.02 20.85 12.77 19.1 14 17.7C13.8 17.18 13.11 15.18 14.2 12.48C14.2 12.48 15.94 11.92 19.25 14.48C20.64 14.08 22.14 13.88 23.64 13.87C25.14 13.88 26.64 14.08 28.03 14.48C31.34 11.92 33.08 12.48 33.08 12.48C34.17 15.18 33.48 17.18 33.28 17.7C34.51 19.1 35.26 20.85 35.26 22.98C35.26 30.32 30.86 31.93 26.67 32.43C27.38 33.05 28.01 34.26 28.01 36.1V42.01C28.01 42.55 28.37 43.17 29.39 42.97C37.42 40.28 43.25 32.83 43.25 24C43.25 12.95 34.3 4 24 4Z" fill="white"/></svg>`,
+  docker: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M4 25C4 21 7 18 11 18H37C41 18 44 21 44 25C44 29 41 32 37 32H11C7 32 4 29 4 25Z" fill="#2496ED"/><rect x="12" y="10" width="6" height="6" fill="white"/><rect x="20" y="10" width="6" height="6" fill="white"/><rect x="20" y="2" width="6" height="6" fill="white"/></svg>`,
+  aws: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 10C16 10 10 16 10 24C10 32 16 38 24 38C32 38 38 32 38 24" stroke="#FF9900" stroke-width="4" stroke-linecap="round" fill="none"/></svg>`,
+  linux: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="16" fill="#FCC624"/><circle cx="18" cy="20" r="2" fill="black"/><circle cx="30" cy="20" r="2" fill="black"/><path d="M20 28C20 28 24 32 28 28" stroke="black" stroke-width="2" fill="none"/></svg>`,
+  scrum: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="20" stroke="#005A9C" stroke-width="4" fill="none"/><path d="M24 10V24L34 34" stroke="#005A9C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
 };
 ---
 
