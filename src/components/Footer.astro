@@ -27,40 +27,36 @@ const t = {
   <div class="divider"></div>
   
   <div class="container footer-content">
-    <div class="footer-col brand-col">
-      <a href="#" class="logo gradient-text">UH</a>
+    <div class="footer-center-content">
+      <a href="#" class="logo">
+        <span class="logo-box">UH</span>
+        <span class="logo-text">Uriel Hernández</span>
+      </a>
       <p class="brand-desc">
         {t.desc}
       </p>
-    </div>
-    
-    <div class="footer-col links-col">
-      <h3>{t.linksTitle}</h3>
+      
       <nav class="footer-nav">
         <a href={lang === 'es' ? '/' : '/en/'}>{t.linkHome}</a>
         <a href={lang === 'es' ? '/#proyectos' : '/en/#proyectos'}>{t.linkProjects}</a>
         <a href={lang === 'es' ? '/#sobre-mi' : '/en/#sobre-mi'}>{t.linkAbout}</a>
       </nav>
     </div>
-    
-    <div class="footer-col contact-col">
-      <h3>{t.contactTitle}</h3>
-      <a href="mailto:joniortiz407@gmail.com" class="email-link">joniortiz407@gmail.com</a>
-      <div class="social-links">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/ortiz-hernadnez-jonathan-uriel-408a673b5/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </div>
   </div>
   
   <div class="footer-bottom">
-    <p class="copyright">
-      &copy; 2025 Uriel Hernández. {t.copyright}
-    </p>
+    <div class="container bottom-content">
+      <p class="copyright">
+        &copy; {new Date().getFullYear()} Uriel Hernández. {t.copyright}
+      </p>
+      <a href="#" class="back-to-top" aria-label="Volver arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+      </a>
+    </div>
   </div>
 </footer>
 
-<style>
+<style is:global>
   .footer {
     position: relative;
     background: var(--bg-glass, rgba(7, 7, 13, 0.4));
@@ -68,7 +64,7 @@ const t = {
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid var(--border-glass, rgba(255, 255, 255, 0.05));
     font-family: var(--font-sans, 'Inter', sans-serif);
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   .divider {
@@ -93,103 +89,129 @@ const t = {
   }
 
   .footer-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 4rem 0;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0 3rem 0;
   }
 
-  @media (min-width: 768px) {
-    .footer-content {
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 2rem;
-    }
+  .footer-center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 500px;
   }
 
   .logo {
-    font-size: 2rem;
-    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     text-decoration: none;
-    display: inline-block;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--color-primary, #6366f1) 0%, rgba(139, 92, 246, 0.8) 100%);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  }
+
+  [data-theme="light"] .logo-box {
+    background: linear-gradient(135deg, var(--color-primary, #163832) 0%, rgba(35, 83, 71, 0.8) 100%);
+    box-shadow: 0 4px 15px rgba(35, 83, 71, 0.3);
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
     letter-spacing: -0.5px;
   }
 
   .brand-desc {
     color: var(--text-secondary, #a1a1aa);
     line-height: 1.6;
-    max-width: 400px;
     font-size: 0.95rem;
-  }
-
-  h3 {
-    color: var(--text-primary, #ffffff);
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .footer-nav {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    background: var(--bg-surface, rgba(255, 255, 255, 0.03));
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.05));
   }
 
   .footer-nav a {
-    color: var(--text-secondary, #a1a1aa);
+    color: var(--text-primary, #ffffff);
     text-decoration: none;
-    transition: color 0.3s ease;
-    width: fit-content;
+    transition: all 0.3s ease;
     font-size: 0.95rem;
+    font-weight: 500;
   }
 
   .footer-nav a:hover {
     color: var(--color-primary, #6366f1);
+    transform: translateY(-2px);
   }
 
-  .contact-col {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .email-link {
-    color: var(--text-secondary, #a1a1aa);
-    text-decoration: none;
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
-    display: inline-block;
-  }
-
-  .email-link:hover {
-    color: var(--color-primary, #6366f1);
-  }
-
-  .social-links {
-    display: flex;
-    gap: 1.5rem;
-  }
-
-  .social-links a {
-    color: var(--text-secondary, #a1a1aa);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
-  }
-
-  .social-links a:hover {
-    color: var(--color-primary, #6366f1);
+  [data-theme="light"] .footer-nav a:hover {
+    color: var(--color-primary, #163832);
   }
 
   .footer-bottom {
     border-top: 1px solid var(--border-glass, rgba(255, 255, 255, 0.05));
-    padding: 2rem;
-    text-align: center;
+    padding: 1.5rem 0;
+  }
+
+  .bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .copyright {
     color: var(--text-muted, #71717a);
     font-size: 0.875rem;
     margin: 0;
+  }
+
+  .back-to-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-glass);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+  }
+
+  .back-to-top:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 640px) {
+    .bottom-content {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
   }
 </style>
