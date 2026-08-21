@@ -272,12 +272,12 @@ Local DB: IndexedDB`
     ],
     highlights: [
       {
-        title: 'Offline-First',
-        description: 'El sistema puede seguir operando sin conexión a internet y sincronizar las ventas en background una vez que la red se restablece garantizando continuidad.'
+        title: 'Múltiples sucursales',
+        description: 'Capacidad de gestionar múltiples sucursales con inventarios independientes y transferencias entre ellas.'
       },
       {
-        title: 'Impresión ESC/POS Nativa',
-        description: 'Elimina el cuadro de diálogo de impresión del navegador web enviando comandos binarios crudos directamente a la impresora térmica mediante Web Serial API.'
+        title: 'Impresi�n ESC/POS Nativa',
+        description: 'Elimina el cuadro de di�logo de impresi�n del navegador web enviando comandos binarios crudos directamente a la impresora t�rmica mediante Web Serial API.'
       }
     ]
   },
@@ -397,6 +397,130 @@ Legacy Compatibility: 100% Secure`
       {
         title: 'Resolución Inteligente',
         description: 'El uso de normalización para strings y fallbacks previene la corrupción de datos ante errores humanos típicos de captura en Excel, garantizando la integridad de la base de datos.'
+      }
+    ]
+  }
+
+  , 'seat-calidad-bd': {
+    id: 'seat-calidad-bd',
+    title: 'Calidad de Base de Datos',
+    subtitle: 'Portal interno para Cantabria Motors (SEAT & Volkswagen)',
+    description: [
+      'Implementación de una arquitectura de base de datos relacional y portales de gestión para optimizar el control de clientes, historiales de mantenimiento automotriz y planes de capacitación del personal.',
+      'El sistema abarca múltiples portales internos asegurando la calidad de los datos, el seguimiento a través del ciclo PDCA y la seguridad con autenticación robusta.'
+    ],
+    terminal: {
+      command: 'mysql -u root -p seat_db',
+      output: `<span class="status-icon">🗄️</span> Database   <span class="tech-tag">[MySQL 8.0]</span>  <span class="status-running">● Connected</span>
+<span class="status-icon">🛡️</span> Security   <span class="tech-tag">[Auth]</span>       <span class="status-running">● Strict</span>  
+<span class="status-icon">🔄</span> Sync       <span class="tech-tag">[CRM/ERP]</span>    <span class="status-running">● Active</span>
+
+Tables: 25+ structured
+Audits: Continuous`
+    },
+    stats: [
+      { icon: '👥', value: '100%', label: 'Control Personal' },
+      { icon: '🚗', value: '2', label: 'Marcas' },
+      { icon: '📊', value: '4', label: 'Portales Integrados' }
+    ],
+    architecture: {
+      title: 'Arquitectura Relacional',
+      subtitle: 'Diseño robusto enfocado en la integridad y consistencia',
+      type: 'ENTERPRISE DB',
+      cards: [
+        {
+          id: 'database',
+          icon: '🗄️',
+          title: 'Base de Datos',
+          subtitle: 'MySQL 8.0',
+          features: ['Modelo Entidad-Relación', 'Diccionario de Datos', 'Restricciones de Integridad', 'Auditoría Continua']
+        },
+        {
+          id: 'backend',
+          icon: '☕',
+          title: 'Backend',
+          subtitle: 'Java 17',
+          features: ['APIs Seguras', 'Control de Accesos', 'Reportes Automatizados', 'Integración CRM/ERP']
+        },
+        {
+          id: 'ui',
+          icon: '🖥️',
+          title: 'Portales Web',
+          subtitle: 'Interfaces Internas',
+          features: ['Portal de Clientes', 'Group Retail Portal', 'Gestor de Capacitaciones', 'Autenticación SecurID']
+        }
+      ]
+    },
+    stack: [
+      {
+        category: 'Database',
+        items: [
+          { icon: '🐬', name: 'MySQL' },
+          { icon: '📝', name: 'SQL' },
+          { icon: '📊', name: 'Diccionario Datos' }
+        ]
+      },
+      {
+        category: 'Backend',
+        items: [
+          { icon: '☕', name: 'Java 17' },
+          { icon: '🛡️', name: 'Seguridad' }
+        ]
+      },
+      {
+        category: 'Metodologías',
+        items: [
+          { icon: '🔄', name: 'Scrum' },
+          { icon: '📈', name: 'Ciclo PDCA' },
+          { icon: '📋', name: 'Requerimientos' }
+        ]
+      },
+      {
+        category: 'Infraestructura',
+        items: [
+          { icon: '🐧', name: 'Linux Server' },
+          { icon: '💾', name: 'Backups' }
+        ]
+      }
+    ],
+    modules: [
+      {
+        icon: '👥',
+        title: 'Portal de Clientes',
+        description: 'Gestión detallada de clientes y su historial de interacciones.',
+        features: ['Historial de compras', 'Gestión de encuestas', 'Feedback de servicio', 'Actualización en tiempo real']
+      },
+      {
+        icon: '🚗',
+        title: 'Group Retail Portal',
+        description: 'Administración del mantenimiento e intervenciones vehiculares.',
+        features: ['Registro por bastidor', 'Historial de servicios', 'Programación de citas', 'Filtros avanzados']
+      },
+      {
+        icon: '✅',
+        title: 'Q-Check',
+        description: 'Módulo de auditoría y validación de calidad en reparaciones.',
+        features: ['Seguimiento de órdenes', 'Resultados de intervención', 'Técnicos responsables', 'Observaciones detalladas']
+      },
+      {
+        icon: '🎓',
+        title: 'Gestión de Capacitación',
+        description: 'Control de cursos, certificaciones y progreso del personal.',
+        features: ['Asignación de cursos', 'Progreso individual', 'Cursos obligatorios', 'Exportación de reportes']
+      }
+    ],
+    highlights: [
+      {
+        title: 'Diccionario de Datos Estructurado',
+        description: 'Creación de un Diccionario de Datos exhaustivo para estandarizar la información en toda la empresa, mejorando la coherencia y evitando redundancias.'
+      },
+      {
+        title: 'Mejora Continua (PDCA)',
+        description: 'Implementación del ciclo PDCA (Plan-Do-Check-Act) para asegurar la optimización constante de los servicios de mantenimiento automotriz.'
+      },
+      {
+        title: 'Seguridad y Privacidad',
+        description: 'Sistema reforzado con métodos de autenticación avanzados (certificados y SecurID) para proteger la confidencialidad de la información.'
       }
     ]
   }

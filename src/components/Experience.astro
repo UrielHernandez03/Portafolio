@@ -5,28 +5,84 @@ const t = {
   es: {
     sectionLabel: "// EXPERIENCIA",
     sectionTitle: "Mi <span class=\"gradient-text\">Experiencia</span>",
-    role: "Desarrollador de Software",
-    company: "Vlim",
-    date: "Mayo 2026 - Agosto 2026",
     moreInfo: "Más Información",
-    p1: "Desarrollo de soluciones de consultoría para distintos clientes y stacks tecnológicos, destacando un servicio de prueba de vida y validación de identidad con Google Vision API, ML Kit y MediaPipe sobre Google Cloud (Cloud Run, Cloud SQL); mantenimiento correctivo y evolutivo de sistemas en producción.",
-    p2: "Desarrollo y mejora de plataformas web empresariales, participando en módulos clave para comunidades, gestión de personal y operación interna.",
-    l1: "Desarrollo y mantenimiento de módulos de administración y usuario.",
-    l2: "Validación y sanitización de datos, mejora de formularios e interfaces responsivas.",
-    l3: "Depuración, pruebas funcionales, documentación técnica y mejora continua."
+    experiences: [
+      {
+        role: "Desarrollador Full-Stack",
+        company: "Vlim",
+        date: "Mayo 2026 - Agosto 2026",
+        logo: "/images/vlim.jpg",
+        description: [
+          "Desarrollo de soluciones de consultoría para distintos clientes y stacks tecnológicos, destacando un servicio de prueba de vida y validación de identidad con Google Vision API, ML Kit y MediaPipe sobre Google Cloud (Cloud Run, Cloud SQL); mantenimiento correctivo y evolutivo de sistemas en producción.",
+          "Desarrollo y mejora de plataformas web empresariales, participando en módulos clave para comunidades, gestión de personal y operación interna."
+        ],
+        bullets: [
+          "Desarrollo y mantenimiento de módulos de administración y usuario.",
+          "Validación y sanitización de datos, mejora de formularios e interfaces responsivas.",
+          "Depuración, pruebas funcionales, documentación técnica y mejora continua."
+        ],
+        tags: ["React", "Node.js", "Google Cloud", "Cloud Run", "Cloud SQL", "ML Kit", "MediaPipe", "PHP", "PostgreSQL", "MongoDB", "Moleculer"]
+      },
+      {
+        role: "Desarrollo y Calidad de BD",
+        company: "Cantabria Motors (SEAT Ecatepec)",
+        date: "Enero 2024 - Abril 2024",
+        logo: "/images/WVS.png",
+        description: [
+          "Desarrollo de una propuesta integral para mejorar la calidad y gestión de la información de clientes, empleados, vehículos, servicios y capacitaciones, buscando mantener los datos actualizados, organizados y consistentes.",
+          "El proyecto se centró en la investigación y análisis profundo de las necesidades de información de la empresa para optimizar sus procesos internos."
+        ],
+        bullets: [
+          "Diseño de la estructura de la base de datos, elaboración del Diagrama Entidad-Relación (DER) y definición de entidades y relaciones.",
+          "Levantamiento, refinamiento y definición de requerimientos funcionales y no funcionales mediante metodología Scrum.",
+          "Gestión de registros de clientes, personal, información de vehículos y servicios de mantenimiento.",
+          "Implementación de funcionalidades para evaluar la satisfacción del cliente mediante encuestas y retroalimentación.",
+          "Realización de pruebas, validaciones del sistema y aplicación del ciclo PDCA como estrategia de mejora continua."
+        ],
+        tags: ["MySQL", "SQL", "Java 17", "Scrum", "Arquitectura de BD", "QA"]
+      }
+    ]
   },
   en: {
     sectionLabel: "// EXPERIENCE",
     sectionTitle: "My <span class=\"gradient-text\">Experience</span>",
-    role: "Software Developer",
-    company: "Vlim",
-    date: "May 2026 - August 2026",
     moreInfo: "More Information",
-    p1: "Development of consulting solutions for different clients and technology stacks, highlighting a proof-of-life and identity validation service with Google Vision API, ML Kit, and MediaPipe on Google Cloud (Cloud Run, Cloud SQL); corrective and evolutionary maintenance of systems in production.",
-    p2: "Development and improvement of enterprise web platforms, participating in key modules for communities, personnel management, and internal operation.",
-    l1: "Development and maintenance of administration and user modules.",
-    l2: "Data validation and sanitization, improvement of forms and responsive interfaces.",
-    l3: "Debugging, functional testing, technical documentation, and continuous improvement."
+    experiences: [
+      {
+        role: "Full-Stack Developer",
+        company: "Vlim",
+        date: "May 2026 - August 2026",
+        logo: "/images/vlim.jpg",
+        description: [
+          "Development of consulting solutions for different clients and technology stacks, highlighting a proof-of-life and identity validation service with Google Vision API, ML Kit, and MediaPipe on Google Cloud (Cloud Run, Cloud SQL); corrective and evolutionary maintenance of systems in production.",
+          "Development and improvement of enterprise web platforms, participating in key modules for communities, personnel management, and internal operation."
+        ],
+        bullets: [
+          "Development and maintenance of administration and user modules.",
+          "Data validation and sanitization, improvement of forms and responsive interfaces.",
+          "Debugging, functional testing, technical documentation, and continuous improvement."
+        ],
+        tags: ["React", "Node.js", "Google Cloud", "Cloud Run", "Cloud SQL", "ML Kit", "MediaPipe", "PHP", "PostgreSQL", "MongoDB", "Moleculer"]
+      },
+      {
+        role: "Database Quality & Dev",
+        company: "Cantabria Motors (SEAT Ecatepec)",
+        date: "January 2024 - April 2024",
+        logo: "/images/WVS.png",
+        description: [
+          "Development of a comprehensive proposal to improve the quality and management of information for customers, employees, vehicles, services, and training, ensuring data consistency and organization.",
+          "The project focused on the in-depth research and analysis of the company's information needs to optimize internal processes."
+        ],
+        bullets: [
+          "Design of the database structure, creation of the Entity-Relationship Diagram (ERD), and definition of entities and relationships.",
+          "Gathering, refinement, and definition of functional and non-functional requirements using Scrum methodology.",
+          "Management of customer and staff records, as well as vehicle and maintenance service information.",
+          "Implementation of features to evaluate customer satisfaction through surveys and feedback.",
+          "Execution of system testing and validations, and application of the PDCA cycle for continuous improvement."
+        ],
+        tags: ["MySQL", "SQL", "Java 17", "Scrum", "DB Architecture", "QA"]
+      }
+    ]
   }
 }[lang as 'es' | 'en'] || t['es'];
 ---
@@ -39,55 +95,47 @@ const t = {
       <h2 class="section-title" set:html={t.sectionTitle}></h2>
     </div>
 
-    <div class="exp-card glass reveal">
+    <div class="exp-grid">
+      {t.experiences.map((exp, index) => (
+        <div class="exp-card glass reveal" style={`animation-delay: ${index * 0.1}s`}>
+          <!-- Header: logo círculo + info + botón -->
+          <div class="exp-header">
+            <div class="exp-logo">
+              <img src={exp.logo} alt={exp.company} />
+            </div>
+            <div class="exp-meta">
+              <h3 class="exp-role">{exp.role}</h3>
+              <span class="exp-company">{exp.company}</span>
+              <span class="exp-date">{exp.date}</span>
+            </div>
+            <button class="exp-toggle">
+              {t.moreInfo}
+              <svg class="exp-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+          </div>
 
-      <!-- Header: logo círculo + info + botón -->
-      <div class="exp-header">
-        <div class="exp-logo">
-          <img src="/images/vlim.jpg" alt="Vlim" />
+          <!-- Contenido expandible -->
+          <div class="exp-details">
+            {exp.description.map(para => (
+              <p class="exp-summary">{para}</p>
+            ))}
+            <ul class="exp-bullets">
+              {exp.bullets.map(bullet => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+            <div class="exp-tags">
+              {exp.tags.map(tag => (
+                <span class="exp-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
         </div>
-        <div class="exp-meta">
-          <h3 class="exp-role">{t.role}</h3>
-          <span class="exp-company">{t.company}</span>
-          <span class="exp-date">{t.date}</span>
-        </div>
-        <button class="exp-toggle" id="expToggle">
-          {t.moreInfo}
-          <svg class="exp-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Contenido expandible -->
-      <div class="exp-details" id="expDetails">
-        <p class="exp-summary">
-          {t.p1}
-        </p>
-        <p class="exp-summary">
-          {t.p2}
-        </p>
-        <ul class="exp-bullets">
-          <li>{t.l1}</li>
-          <li>{t.l2}</li>
-          <li>{t.l3}</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">React</span>
-          <span class="exp-tag">Node.js</span>
-          <span class="exp-tag">Google Cloud</span>
-          <span class="exp-tag">Cloud Run</span>
-          <span class="exp-tag">Cloud SQL</span>
-          <span class="exp-tag">ML Kit</span>
-          <span class="exp-tag">MediaPipe</span>
-          <span class="exp-tag">PHP</span>
-          <span class="exp-tag">PostgreSQL</span>
-          <span class="exp-tag">MongoDB</span>
-          <span class="exp-tag">Moleculer</span>
-        </div>
-      </div>
-
+      ))}
     </div>
+
   </div>
 </section>
 
@@ -97,8 +145,15 @@ const t = {
     padding-bottom: 6rem;
   }
 
+  .exp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
   .exp-card {
     max-width: 850px;
+    width: 100%;
     margin: 0 auto;
     padding: 2.5rem;
     border-radius: 20px;
@@ -288,10 +343,13 @@ const t = {
 </style>
 
 <script>
-  const btn = document.getElementById('expToggle');
-  const det = document.getElementById('expDetails');
-  btn?.addEventListener('click', () => {
-    btn.classList.toggle('open');
-    det?.classList.toggle('open');
+  const cards = document.querySelectorAll('.exp-card');
+  cards.forEach(card => {
+    const btn = card.querySelector('.exp-toggle');
+    const det = card.querySelector('.exp-details');
+    btn?.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      det?.classList.toggle('open');
+    });
   });
 </script>
