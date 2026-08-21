@@ -1,0 +1,180 @@
+---
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    sectionLabel: "// EDUCACIÓN",
+    sectionTitle1: "Mi",
+    sectionTitle2: "Formación Educativa",
+    education: [
+      {
+        degree: "Ingeniería en Desarrollo y Gestión de Software",
+        school: "Universidad Tecnológica de Tecámac",
+        period: "Ago 2024 - Ago 2026",
+        description: ""
+      },
+      {
+        degree: "Técnico Superior Universitario, Desarrollo de Software Multiplataforma",
+        school: "Universidad Tecnológica de Tecámac",
+        period: "Ago 2022 - Dic 2024",
+        description: ""
+      },
+      {
+        degree: "Técnico en Programación",
+        school: "CECyTEM Tezoyuca",
+        period: "Graduado con honores",
+        description: "Graduado con honores académicos."
+      }
+    ]
+  },
+  en: {
+    sectionLabel: "// EDUCATION",
+    sectionTitle1: "My",
+    sectionTitle2: "Education",
+    education: [
+      {
+        degree: "Software Development and Management Engineering",
+        school: "Tecámac Technological University",
+        period: "Aug 2024 - Aug 2026",
+        description: ""
+      },
+      {
+        degree: "Higher University Technician, Multiplatform Software Development",
+        school: "Tecámac Technological University",
+        period: "Aug 2022 - Dec 2024",
+        description: ""
+      },
+      {
+        degree: "Programming Technician",
+        school: "CECyTEM Tezoyuca",
+        period: "Graduated with honors",
+        description: "Graduated with academic honors."
+      }
+    ]
+  }
+}[lang as 'es' | 'en'] || t['es'];
+---
+
+<section id="educacion" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">{t.sectionLabel}</span>
+      <h2 class="section-title">{t.sectionTitle1} <span class="gradient-text">{t.sectionTitle2}</span></h2>
+    </div>
+
+    <div class="edu-timeline reveal reveal-delay-1">
+      {t.education.map((item) => (
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div class="edu-content section-card">
+            <span class="edu-period">{item.period}</span>
+            <h3 class="edu-degree">{item.degree}</h3>
+            <h4 class="edu-school">{item.school}</h4>
+            {item.description && <p class="edu-desc">{item.description}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .edu-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 2rem;
+  }
+
+  .edu-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(99, 102, 241, 0.2);
+  }
+
+  .edu-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .edu-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .edu-dot {
+    position: absolute;
+    left: -2.35rem;
+    top: 1.5rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary);
+    border: 3px solid #07070d;
+  }
+
+  [data-theme="light"] .edu-dot {
+    border-color: #fafafa;
+  }
+
+  .edu-content {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    padding: 1.8rem;
+    border-radius: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .edu-content:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.4);
+  }
+
+  .edu-period {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--color-primary-light);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .edu-degree {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 0.3rem 0;
+    color: var(--text-primary);
+  }
+
+  .edu-school {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin: 0 0 1rem 0;
+  }
+
+  .edu-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .edu-timeline {
+      padding-left: 1.5rem;
+    }
+    .edu-dot {
+      left: -1.85rem;
+    }
+    .edu-content {
+      padding: 1.5rem;
+    }
+  }
+</style>
