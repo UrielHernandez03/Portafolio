@@ -523,5 +523,124 @@ Audits: Continuous`
         description: 'Sistema reforzado con métodos de autenticación avanzados (certificados y SecurID) para proteger la confidencialidad de la información.'
       }
     ]
+  },
+
+  'inventorypro': {
+    id: 'inventorypro',
+    title: 'InventoryPro ERP',
+    subtitle: 'Sistema Integral de Gestión Empresarial',
+    description: [
+      'InventoryPro ERP es un sistema de gestión empresarial de nivel corporativo (Enterprise Resource Planning) diseñado para controlar de manera eficiente y segura las operaciones diarias de una empresa, integrando la gestión de inventarios, finanzas, ventas (Punto de Venta) y control de usuarios.',
+      'El proyecto destaca por su arquitectura segura con control de acceso basado en roles (RBAC), sistema cerrado (Invite-Only), y un estricto Kárdex de inventario, todo ello bajo un rendimiento excepcional con paginación server-side.'
+    ],
+    terminal: {
+      command: 'npm run dev',
+      output: `<span class="status-icon">⚙️</span> Backend    <span class="tech-tag">[Express+Prisma]</span>    <span class="status-running">● Running</span>
+<span class="status-icon">🖥</span> Frontend   <span class="tech-tag">[React+Vite]</span>      <span class="status-running">● Active</span>  
+<span class="status-icon">🗄️</span> Database   <span class="tech-tag">[PostgreSQL]</span>      <span class="status-running">● Connected</span>
+
+Security: RBAC Enforced
+Integrity: Active`
+    },
+    stats: [
+      { icon: '🛡️', value: 'RBAC', label: 'Seguridad' },
+      { icon: '⚡', value: 'ms', label: 'Respuesta' },
+      { icon: '📦', value: '10k+', label: 'Productos' }
+    ],
+    architecture: {
+      title: 'MERN/PERN Stack',
+      subtitle: 'Arquitectura cliente-servidor de alta concurrencia',
+      type: 'ENTERPRISE ERP',
+      cards: [
+        {
+          id: 'backend',
+          icon: '⚙️',
+          title: 'Backend API RESTful',
+          subtitle: 'Node.js & Express',
+          features: ['TypeScript', 'Prisma ORM', 'JWT & bcrypt', 'Transacciones ACID']
+        },
+        {
+          id: 'frontend',
+          icon: '🖥️',
+          title: 'Frontend SPA',
+          subtitle: 'React & Tailwind',
+          features: ['React Router v6', 'Axios (JWT Interceptors)', 'Recharts', 'jsPDF & XLSX']
+        },
+        {
+          id: 'database',
+          icon: '🗄️',
+          title: 'Base de Datos',
+          subtitle: 'PostgreSQL',
+          features: ['Integridad Referencial', 'Borrado Lógico', 'Paginación Nativa', 'Historial']
+        }
+      ]
+    },
+    stack: [
+      {
+        category: 'Frontend & UI',
+        items: [
+          { icon: '⚛️', name: 'React' },
+          { icon: '🔷', name: 'TypeScript' },
+          { icon: '🎨', name: 'Tailwind CSS' },
+          { icon: '📊', name: 'Recharts' }
+        ]
+      },
+      {
+        category: 'Backend',
+        items: [
+          { icon: '🟢', name: 'Node.js' },
+          { icon: '🚂', name: 'Express.js' },
+          { icon: '🛡️', name: 'JWT & bcrypt' }
+        ]
+      },
+      {
+        category: 'Database & ORM',
+        items: [
+          { icon: '🐘', name: 'PostgreSQL' },
+          { icon: '💎', name: 'Prisma' },
+          { icon: '💾', name: 'Soft Deletes' }
+        ]
+      }
+    ],
+    modules: [
+      {
+        icon: '📊',
+        title: 'Panel de Control',
+        description: 'Visualización general de KPIs y alertas automáticas por desabastecimiento.',
+        features: ['Stock crítico', 'Flujo de caja', 'Métricas principales']
+      },
+      {
+        icon: '🏪',
+        title: 'Punto de Venta (POS)',
+        description: 'Interfaz rápida para venta directa con escáner y generación de tickets.',
+        features: ['Deducción automática', 'Tickets 80mm', 'Historial financiero']
+      },
+      {
+        icon: '📦',
+        title: 'Kárdex de Inventario',
+        description: 'Trazabilidad estricta de Entradas, Salidas y Ajustes de inventario.',
+        features: ['Comprobantes PDF', 'Exportación Excel', 'Firmas de usuario']
+      },
+      {
+        icon: '👥',
+        title: 'Control de Usuarios',
+        description: 'Gestión de la plantilla laboral con seguridad avanzada.',
+        features: ['Roles', 'Sistema cerrado', 'Permisos dinámicos']
+      }
+    ],
+    highlights: [
+      {
+        title: 'Transacciones SQL Atómicas',
+        description: 'Uso de prisma.$transaction en ventas para garantizar que la reducción de stock y el registro financiero ocurran atómicamente, con Rollbacks automáticos en caso de falla.'
+      },
+      {
+        title: 'Generación Dinámica de PDFs en Cliente',
+        description: 'Renderizado de tickets térmicos y reportes directamente usando la CPU del navegador del cliente (jsPDF), liberando al servidor backend de carga computacional excesiva.'
+      },
+      {
+        title: 'Paginación Server-Side',
+        description: 'Búsqueda y paginación ejecutadas de forma nativa en PostgreSQL, entregando la información en bloques para escalar eficientemente el catálogo a cientos de miles de registros.'
+      }
+    ]
   }
 };
