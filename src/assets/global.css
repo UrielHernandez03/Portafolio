@@ -506,4 +506,8 @@ ol {
   .container {
     padding: 0 var(--space-md);
   }
+
+  .section-card {
+    padding: 2rem 1.5rem;
+  }
 }

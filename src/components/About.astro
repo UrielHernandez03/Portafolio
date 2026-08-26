@@ -225,13 +225,13 @@ const projectsCount = Object.keys(projectsData).length;
       gap: 2.5rem;
     }
     .about-col-left {
-      flex-direction: row;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       gap: 1.5rem;
     }
     .about-photo-frame {
-      width: 120px;
-      height: 150px;
+      width: 180px;
+      height: 220px;
       flex-shrink: 0;
     }
     .about-badges {
@@ -241,10 +241,11 @@ const projectsCount = Object.keys(projectsData).length;
       padding: 1.5rem;
     }
     .about-stats {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
     .stat-num {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
   }
 </style>
